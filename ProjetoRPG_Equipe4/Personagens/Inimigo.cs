@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoRPG_Equipe4.Personagem
+namespace ProjetoRPG_Equipe4.Personagens
 {
     internal class Inimigo : Personagem
     {
@@ -20,9 +21,10 @@ namespace ProjetoRPG_Equipe4.Personagem
             PontosVida = 100;
             Sexo = sexo;
             Nome = nome;
-            Forca = 1;
+            Forca = 70;
             XP = 0;
             Status = "Saudável";
-        }
+        } 
+
     }
 }
