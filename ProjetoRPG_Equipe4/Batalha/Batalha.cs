@@ -10,7 +10,7 @@ namespace ProjetoRPG_Equipe4.Batalha
     {
         public void IniciarBatalha()
         {
-            Console.WriteLine("Iniciando Batalha");
+            Console.WriteLine("Iniciando Batalha!");
             Console.WriteLine("Selecione: 1- Escolher Personagem \n2-Escolher Inimigo");
             int op = int.Parse(Console.ReadLine());
             switch (op)
