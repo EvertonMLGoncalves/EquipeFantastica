@@ -9,10 +9,8 @@ namespace ProjetoRPG_Equipe4.Personagens
 {
     internal class Arqueiro : Personagem
     {
-        public int Id { get; set; }
-        public int Nivel { get; set; }
         public int Destreza { get; set; }
-        public int Codigo { get; set; }
+        public const int CODIGO = 2;
         public Arqueiro(int id, string nome, string sexo) : base(nome, sexo)
         {
             Id = id;
@@ -25,7 +23,19 @@ namespace ProjetoRPG_Equipe4.Personagens
             Forca = 1;
             XP = 0;
             Status = "Saudável"; 
-            Codigo = 2;
+          
+        }
+        public override void ExibirInfo()
+        {
+            Console.WriteLine($"Destreza: {Destreza}");
+            base.ExibirInfo();
+        }
+        public override Personagem CriarPersonagem()
+        {
+            Console.WriteLine("Digite a Destreza do Personagem:");
+            Destreza = int.Parse(Console.ReadLine());
+            base.CriarPersonagem();
+            return this;
         }
     }
 }

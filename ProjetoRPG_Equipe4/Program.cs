@@ -13,7 +13,7 @@ namespace ProjetoRPG_Equipe4
     {
         static void Main(string[] args)
         {
-            Guerreiro g1 = new Guerreiro(1, "Lucas", "Homem");
+            /*Guerreiro g1 = new Guerreiro(1, "Lucas", "Homem");
 
             Inimigo n1 = new Inimigo(1, 10, "Bicho feio", "Indefinido"); 
              
@@ -24,9 +24,15 @@ namespace ProjetoRPG_Equipe4
             g1.ListaArmas.Add(arma1);
 
             n1.ListaArmas.Add(arma1);
-            g1.ExibirInfo();
+            g1.ExibirInfo();*/
 
-            /*Batalha.IniciarBatalha(g1, n1);*/
+            /* Batalha.IniciarBatalha(g1, n1);*/
+
+            Guerreiro guerreiro1 = (Guerreiro)new Guerreiro().CriarPersonagem();
+
+            guerreiro1.ExibirInfo();
+
+           guerreiro1.AtualizarDados();
 
             Console.ReadKey();
 

@@ -9,11 +9,8 @@ namespace ProjetoRPG_Equipe4.Personagens
 {
     internal class Guerreiro : Personagem
     {
-        public int Id { get; set; }
-        public int Nivel { get; set; }
         public int Furia { get; set; }
-
-        public int Codigo { get; set; }
+        public const int CODIGO = 1;
 
         public Guerreiro(int id, string nome, string sexo) : base(nome, sexo)
         {
@@ -24,18 +21,26 @@ namespace ProjetoRPG_Equipe4.Personagens
             PontosVida = 100;
             Sexo = sexo;
             Nome = nome;
-            Forca = 50;
+            Forca = 90;
             XP = 0;
             Status = "Saudável";
-            Codigo = 1;
         }
+        public Guerreiro() { }
         public override void ExibirInfo()
-        { 
+        {
+            Console.WriteLine($"Fúria: {Furia}");
             base.ExibirInfo();
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Nivel: {Nivel}");
-            Console.WriteLine($"Furia: {Furia}\n----------------------"); 
-   
+        }
+        public override Personagem CriarPersonagem()
+        {
+            Console.WriteLine("Digite a Fúria do Personagem:"); 
+            Furia = int.Parse(Console.ReadLine());
+            base.CriarPersonagem();
+            return this;
+        }
+        public override void AtualizarDados()
+        {
+            base.AtualizarDados();
         }
     }
 }

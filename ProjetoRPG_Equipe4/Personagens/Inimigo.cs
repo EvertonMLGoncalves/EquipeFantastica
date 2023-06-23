@@ -9,14 +9,14 @@ namespace ProjetoRPG_Equipe4.Personagens
 {
     internal class Inimigo : Personagem
     {
-        public int Dificuldade { get; set; } // equivalente ao nível do inimigo
-        public int Recompensa { get; set; } // o quanto que desconta do XP dos bonzinhos
+       /* public int Dificuldade { get; set; } */// equivalente ao nível do inimigo
+        /*public int Recompensa { get; set; }*/ // o quanto que desconta do XP dos bonzinhos
         //public enum Tipo;
 
         public Inimigo(int dificuldade, int recompença, string nome, string sexo) : base(nome, sexo)
         {
-            Dificuldade = dificuldade;
-            Recompensa = recompença;
+            Nivel = dificuldade;
+            XP = recompença;
             Defesa = 1;
             PontosVida = 100;
             Sexo = sexo;
@@ -24,7 +24,10 @@ namespace ProjetoRPG_Equipe4.Personagens
             Forca = 70;
             XP = 0;
             Status = "Saudável";
-        } 
-
+        }
+        public override void ExibirInfo()
+        {
+            base.ExibirInfo();
+        }
     }
 }
