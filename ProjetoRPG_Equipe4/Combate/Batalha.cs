@@ -1,11 +1,6 @@
 ﻿using ProjetoRPG_Equipe4.Personagens;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Combate
 {
@@ -47,7 +42,7 @@ namespace ProjetoRPG_Equipe4.Combate
                             Console.WriteLine("\n****************** \nGAME OVER!  " +
                                 "\n******************");
                             Console.WriteLine("--------------------------");
-                            TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo,XPganho);
+                            TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
                             Console.Clear();
                             Thread.Sleep(10000);
                             flag = false;
@@ -59,7 +54,7 @@ namespace ProjetoRPG_Equipe4.Combate
                         break;
                     case 2:
                         Console.WriteLine("Fugindo...");
-                        TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo,XPganho);
+                        TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
                         Thread.Sleep(10000);
                         Console.Clear();
                         break;
@@ -110,6 +105,20 @@ namespace ProjetoRPG_Equipe4.Combate
         }
 
 
+        public void ReceberXP(int experiencia) // ~~Dani Alves
+        {
+            XP += experiencia;
+
+            int xpNecessario = CalcularXpNecessarioNivel(Nivel);
+            if (XP >= xpNecessario)
+            {
+                Nivel++;
+            }
+        }
+
+        private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
+        {
+            return 100 * nivel; //100 de xp para o prox nivel
+        }
     }
-}
 

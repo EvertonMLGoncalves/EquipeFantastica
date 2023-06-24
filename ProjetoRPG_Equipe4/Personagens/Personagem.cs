@@ -1,9 +1,6 @@
 ﻿using ProjetoRPG_Equipe4.Artefatos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
@@ -22,7 +19,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         public List<Habilidades> ListaDeHabilidades { get; set; }
         public List<Arma> ListaArmas { get; set; } // adc para fzr o drop de armas //~~Helena
 
-        public Personagem() {  } //~~Helena
+        public Personagem() { } //~~Helena
 
         public Personagem(string nome, string sexo)
         {
@@ -35,7 +32,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável";
         }
 
-        
+
         Random random = new Random();
         public void Atacar(Personagem inimigo) //~~Helena tudo // ESSE OU O ATACAR PRECISA REFINAR!!
         {
@@ -44,24 +41,28 @@ namespace ProjetoRPG_Equipe4.Personagens
             int i = 1;
             int index = 1;
             //Escolhada arma
-            if (ListaArmas.Count >0) // vendo se o personagem tem arma
+            if (ListaArmas.Count > 0) // vendo se o personagem tem arma
             {
-                if (CODIGO == 1 || CODIGO == 2 || CODIGO ==3) { //Checando se nn é um inimigo
-                    foreach (Arma arma in ListaArmas){ Console.WriteLine($"{index} - {arma.Nome}"); index++; }
+                if (CODIGO == 1 || CODIGO == 2 || CODIGO == 3)
+                { //Checando se nn é um inimigo
+                    foreach (Arma arma in ListaArmas) { Console.WriteLine($"{index} - {arma.Nome}"); index++; }
                     Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
                     i = int.Parse(Console.ReadLine());
                     Arma armaEscolhida = ListaArmas[i - 1];
                     danoArma = armaEscolhida.DanoArma;
 
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
-                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1); }
-                else { // se for inimigo
-                    i = random.Next(0, ListaArmas.Count-1);
-                    Arma armaEscolhida = ListaArmas[i ];
+                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1);
+                }
+                else
+                { // se for inimigo
+                    i = random.Next(0, ListaArmas.Count - 1);
+                    Arma armaEscolhida = ListaArmas[i];
                     danoArma = armaEscolhida.DanoArma;
 
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
-                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i);}
+                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i);
+                }
             }
             else dano = Forca - inimigo.Defesa;
 
@@ -69,17 +70,25 @@ namespace ProjetoRPG_Equipe4.Personagens
             danoArma += Forca;
             int danoTotal = danoArma + dano;
 
+            //Golpe crítico
+            bool golpeCritico = false; //checar se houve golpe critico para a saida de dados
+            if (GolpeCritico()) {danoTotal = danoTotal + (int)(danoTotal * 0.5); golpeCritico = true;} //50% mais de dano ~~Dani Alves
+
             //Ataque
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
             Console.WriteLine($"{inimigo.Nome} está sendo atacado!");
 
+
+            if (golpeCritico) Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico! Aumentando em 50% o seu dano :("); // ~~Dani Alves com alteração de Helena na frase e sua localização
             //Caso morte ocorra
             if (inimigo.PontosVida <= 0) Console.WriteLine($"Dano Recebido: {danoTotal} \n{inimigo.Nome} morreu");
             //Caso morte não ocorra
             else Console.WriteLine($"Dano Recebido: {danoTotal} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");
 
         }
+
+        //<>
         public virtual void ExibirInfo() //~~Everton c/ Helena na call
         {
             Console.WriteLine($"Id: {Id}");
@@ -92,10 +101,10 @@ namespace ProjetoRPG_Equipe4.Personagens
             Console.WriteLine($"Status: {Status}");
             Console.WriteLine($"XP: {XP}");
 
-        } 
+        }
         public virtual Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
-            Console.WriteLine("Digite o Id do Persongem:"); 
+            Console.WriteLine("Digite o Id do Persongem:");
             Id = int.Parse(Console.ReadLine());
             Console.WriteLine("Digite o Nome do Persongem:");
             Nome = Console.ReadLine();
@@ -117,45 +126,54 @@ namespace ProjetoRPG_Equipe4.Personagens
             return this;
         }
 
-        
-        
-       public virtual void AtualizarDados() //~~Everton c/ Helena na call
+
+
+        public virtual void AtualizarDados() //~~Everton c/ Helena na call
         {
-            bool flag = true; 
-            while (flag)  
+            bool flag = true;
+            while (flag)
             {
-            Console.WriteLine("Digite \n1-Nome \n2-Sexo \n3-para sair");
-            int op = int.Parse(Console.ReadLine());
-            switch (op)
-            {
-                case 1:
-                    Console.WriteLine("Digite o novo nome:"); 
-                    string nome = Console.ReadLine();
-                    Console.WriteLine($"Tem certeza que deseja alterar para {nome}\n1-sim \n2-não"); 
-                    int opp = int.Parse(Console.ReadLine());
-                    if (opp == 1)
-                    {
-                        Nome = nome;
-                        break;
-                    }
-                    else break; 
+                Console.WriteLine("Digite \n1-Nome \n2-Sexo \n3-para sair");
+                int op = int.Parse(Console.ReadLine());
+                switch (op)
+                {
+                    case 1:
+                        Console.WriteLine("Digite o novo nome:");
+                        string nome = Console.ReadLine();
+                        Console.WriteLine($"Tem certeza que deseja alterar para {nome}\n1-sim \n2-não");
+                        int opp = int.Parse(Console.ReadLine());
+                        if (opp == 1)
+                        {
+                            Nome = nome;
+                            break;
+                        }
+                        else break;
                     case 2:
-                    Console.WriteLine("Digite o novo sexo:");
-                    string sexo = Console.ReadLine();
-                    Console.WriteLine($"Tem certeza que deseja alterar para {sexo}\n1-sim \n2-não");
-                    opp = int.Parse(Console.ReadLine());
-                    if (opp == 1)
-                    {
-                        Sexo = sexo;
-                        break;
-                    }
-                    else break;
-                case 3:
+                        Console.WriteLine("Digite o novo sexo:");
+                        string sexo = Console.ReadLine();
+                        Console.WriteLine($"Tem certeza que deseja alterar para {sexo}\n1-sim \n2-não");
+                        opp = int.Parse(Console.ReadLine());
+                        if (opp == 1)
+                        {
+                            Sexo = sexo;
+                            break;
+                        }
+                        else break;
+                    case 3:
                         flag = false;
-                        break;               
+                        break;
+                }
             }
-            }
-        }  
+        }
+
+
+        private bool GolpeCritico() // ~~Dani Alves c/ implementação de Helena
+        {
+            int chanceCritico = 10; //10%
+
+            Random random = new Random();
+            return random.Next(100) < chanceCritico;
+        }
 
     }
 }
