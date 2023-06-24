@@ -13,26 +13,41 @@ namespace ProjetoRPG_Equipe4
     {
         static void Main(string[] args)
         {
-            /*Guerreiro g1 = new Guerreiro(1, "Lucas", "Homem");
-
-            Inimigo n1 = new Inimigo(1, 10, "Bicho feio", "Indefinido"); 
+           Guerreiro g1 = (Guerreiro)new Guerreiro().CriarPersonagem();
+            Inimigo n1 = (Inimigo) new Inimigo().CriarPersonagem();
              
-            Arma arma1 = new Arma(1, "Espada", 15);  
-             
-            Arma arma2 = new Arma(2, "Tridente", 40); 
-             
-            g1.ListaArmas.Add(arma1);
+            Arma arma1 = new Arma().CriarArma();
+            Arma arma2 = new Arma().CriarArma();
+            Arma.DroparArmas(g1, arma1);
+            Arma.DroparArmas(n1 , arma2);
+            Arma.DroparArmas(g1, arma2);
 
-            n1.ListaArmas.Add(arma1);
-            g1.ExibirInfo();*/
+           // Habilidades habilidade1 = new Habilidades().criarHabilidade();
+            //Habilidades habilidade2 = new Habilidades().criarHabilidade();
+            
+            //Habilidades.dropHabilidade(g1, habilidade1);
+            //Habilidades.dropHabilidade(g1 , habilidade2);
 
-            /* Batalha.IniciarBatalha(g1, n1);*/
+            
 
-            Guerreiro guerreiro1 = (Guerreiro)new Guerreiro().CriarPersonagem();
+           Batalha.IniciarBatalha(g1, n1);
 
-            guerreiro1.ExibirInfo();
+            foreach(Arma arma in g1.ListaArmas) Console.WriteLine(arma.Nome);
 
-           guerreiro1.AtualizarDados();
+            /* Guerreiro guerreiro1 = (Guerreiro)new Guerreiro().CriarPersonagem();
+             Guerreiro guerreiro2 = (Guerreiro)new Guerreiro().CriarPersonagem();
+             Guerreiro guerreiro3 = (Guerreiro)new Guerreiro().CriarPersonagem();
+             Guerreiro guerreiro4 = (Guerreiro)new Guerreiro().CriarPersonagem();*/
+
+
+
+            arma1.ExibirInfo();
+          
+
+            
+            /*guerreiro1.ExibirInfo();
+
+           guerreiro1.AtualizarDados();*/
 
             Console.ReadKey();
 

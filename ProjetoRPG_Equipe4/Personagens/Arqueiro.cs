@@ -10,7 +10,7 @@ namespace ProjetoRPG_Equipe4.Personagens
     internal class Arqueiro : Personagem
     {
         public int Destreza { get; set; }
-        public const int CODIGO = 2;
+        //public const int CODIGO = 2; //~~Helena
         public Arqueiro(int id, string nome, string sexo) : base(nome, sexo)
         {
             Id = id;
@@ -25,17 +25,22 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável"; 
           
         }
-        public override void ExibirInfo()
+        public override void ExibirInfo() //~~Everton c/ Helena na call
         {
             Console.WriteLine($"Destreza: {Destreza}");
             base.ExibirInfo();
         }
-        public override Personagem CriarPersonagem()
+        public override Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
             Console.WriteLine("Digite a Destreza do Personagem:");
             Destreza = int.Parse(Console.ReadLine());
             base.CriarPersonagem();
+            CODIGO = 2; //~~Helena
             return this;
+        }
+        public override void AtualizarDados() //~~Everton c/ Helena na call
+        {
+            base.AtualizarDados();
         }
     }
 }

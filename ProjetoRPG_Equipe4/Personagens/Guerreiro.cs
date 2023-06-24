@@ -1,4 +1,5 @@
 ﻿using Microsoft.SqlServer.Server;
+using ProjetoRPG_Equipe4.Artefatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace ProjetoRPG_Equipe4.Personagens
     internal class Guerreiro : Personagem
     {
         public int Furia { get; set; }
-        public const int CODIGO = 1;
+        
+        
 
         public Guerreiro(int id, string nome, string sexo) : base(nome, sexo)
         {
@@ -26,19 +28,21 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável";
         }
         public Guerreiro() { }
-        public override void ExibirInfo()
+        public override void ExibirInfo() //~~Everton c/ Helena na call
         {
             Console.WriteLine($"Fúria: {Furia}");
             base.ExibirInfo();
         }
-        public override Personagem CriarPersonagem()
+        public override Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
             Console.WriteLine("Digite a Fúria do Personagem:"); 
             Furia = int.Parse(Console.ReadLine());
+            CODIGO = 1; //~~Helena
             base.CriarPersonagem();
+            
             return this;
         }
-        public override void AtualizarDados()
+        public override void AtualizarDados() //~~Everton c/ Helena na call
         {
             base.AtualizarDados();
         }

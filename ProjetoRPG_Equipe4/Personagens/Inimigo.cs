@@ -9,14 +9,14 @@ namespace ProjetoRPG_Equipe4.Personagens
 {
     internal class Inimigo : Personagem
     {
-       /* public int Dificuldade { get; set; } */// equivalente ao nível do inimigo
-        /*public int Recompensa { get; set; }*/ // o quanto que desconta do XP dos bonzinhos
+        /* public int Dificuldade { get; set; } */// equivalente ao nível do inimigo (nao existe mais ) //~~Everton c/ Helena na call
+        /*public int Recompensa { get; set; }*/ // o quanto que desconta do XP dos bonzinhos (nao existe mais ) //~~Everton c/ Helena na call
         //public enum Tipo;
 
         public Inimigo(int dificuldade, int recompença, string nome, string sexo) : base(nome, sexo)
         {
-            Nivel = dificuldade;
-            XP = recompença;
+            Nivel = dificuldade; //~~Everton c/ Helena na call
+            XP = recompença; //~~Everton c/ Helena na call
             Defesa = 1;
             PontosVida = 100;
             Sexo = sexo;
@@ -25,9 +25,12 @@ namespace ProjetoRPG_Equipe4.Personagens
             XP = 0;
             Status = "Saudável";
         }
-        public override void ExibirInfo()
-        {
-            base.ExibirInfo();
-        }
+        public Inimigo() { }
+        public override void ExibirInfo() //~~Everton c/ Helena na call
+        { base.ExibirInfo();}
+        public override Personagem CriarPersonagem() //~~Everton c/ Helena na call
+        {base.CriarPersonagem(); CODIGO = 4;  return this;}
+        public override void AtualizarDados() //~~Everton c/ Helena na call
+        {base.AtualizarDados();}
     }
 }

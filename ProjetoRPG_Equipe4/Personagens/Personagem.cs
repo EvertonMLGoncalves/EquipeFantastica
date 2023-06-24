@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
-    internal class Personagem
+    public class Personagem
     {
         public int Id { get; set; }
         public string Nome { get; set; } // editavel          
@@ -18,13 +18,11 @@ namespace ProjetoRPG_Equipe4.Personagens
         public int Defesa { get; set; } //inicia com 1 
         public string Status { get; set; }
         public int XP { get; set; } // Experiencia, qnd vence o adverssario, ele ganha XP 
+        public int CODIGO { get; set; } // adc para fzr o drop de armas //~~Helena
+        public List<Habilidades> ListaDeHabilidades { get; set; }
+        public List<Arma> ListaArmas { get; set; } // adc para fzr o drop de armas //~~Helena
 
-        //public List<Habilidade> Habilidades { get; set; }
-        
-
-        public List<Arma> ListaArmas = new List<Arma>();
-         
-        public Personagem() { } 
+        public Personagem() {  } //~~Helena
 
         public Personagem(string nome, string sexo)
         {
@@ -36,20 +34,54 @@ namespace ProjetoRPG_Equipe4.Personagens
             XP = 0;
             Status = "Saudável";
         }
-        public void Atacar(Personagem inimigo)
+
+        
+        Random random = new Random();
+        public void Atacar(Personagem inimigo) //~~Helena tudo // ESSE OU O ATACAR PRECISA REFINAR!!
         {
-            int dano = Forca - inimigo.Defesa;
-            if (dano < 0)
+            int danoArma = 0;
+            int danoHabilidade = 0;
+            int dano = 0;
+            int i = 1;
+            int index = 1;
+            //Escolhada arma
+            if (ListaArmas.Count >0) // vendo se o personagem tem arma
             {
-                dano = 0;
+                if (inimigo.CODIGO == 1 || inimigo.CODIGO == 2 || inimigo.CODIGO ==3) { //Checando se nn é um inimigo
+                    foreach (Arma arma in ListaArmas) Console.WriteLine($"{index} - {arma.Nome}");
+                    Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
+                    i = int.Parse(Console.ReadLine());
+                    Arma armaEscolhida = ListaArmas[i - 1];
+                    danoArma = armaEscolhida.DanoArma;
+
+                    armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
+                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1); }
+                else { 
+                    i = random.Next(0, ListaArmas.Count-1);
+                    Arma armaEscolhida = ListaArmas[i ];
+                    danoArma = armaEscolhida.DanoArma;
+
+                    armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
+                    if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i);}
             }
-            inimigo.PontosVida -= dano;
+            else if (!(ListaDeHabilidades.Count > 0)) dano = Forca - inimigo.Defesa;
+
+            
+            
+            int danoTotal = danoArma + danoHabilidade +dano;
+
+            //Ataque
+            if (danoTotal < 0) danoTotal = 0;
+            inimigo.PontosVida -= danoTotal;
             Console.WriteLine($"{inimigo.Nome} está sendo atacado!");
-            if (inimigo.PontosVida <= 0) Console.WriteLine($"Dano Recebido: {dano} \n{inimigo.Nome} morreu");
-            else Console.WriteLine($"Dano Recebido: {dano} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");
+
+            //Caso morte ocorra
+            if (inimigo.PontosVida <= 0) Console.WriteLine($"Dano Recebido: {danoTotal} \n{inimigo.Nome} morreu");
+            //Caso morte não ocorra
+            else Console.WriteLine($"Dano Recebido: {danoTotal} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");
 
         }
-        public virtual void ExibirInfo()
+        public virtual void ExibirInfo() //~~Everton c/ Helena na call
         {
             Console.WriteLine($"Id: {Id}");
             Console.WriteLine($"Nome: {Nome}");
@@ -62,7 +94,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Console.WriteLine($"XP: {XP}");
 
         } 
-        public virtual Personagem CriarPersonagem()
+        public virtual Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
             Console.WriteLine("Digite o Id do Persongem:"); 
             Id = int.Parse(Console.ReadLine());
@@ -82,10 +114,13 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = Console.ReadLine();
             Console.WriteLine("Digite o XP do Persongem:");
             XP = int.Parse(Console.ReadLine());
+            ListaArmas = new List<Arma>(); ListaDeHabilidades = new List<Habilidades>();
             return this;
         }
-       /* public virtual Personagem() { }*/ 
-       public virtual void AtualizarDados()
+
+        
+        
+       public virtual void AtualizarDados() //~~Everton c/ Helena na call
         {
             bool flag = true; 
             while (flag)  
