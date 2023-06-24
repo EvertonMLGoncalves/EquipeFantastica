@@ -46,6 +46,8 @@
     <Compile Include="Artefatos\Armas.cs" />
     <Compile Include="Artefatos\Habilidades.cs" />
     <Compile Include="Combate\Batalha.cs" />
+    <Compile Include="Enums\EnumHabilidadeInimigo.cs" />
+    <Compile Include="Enums\EnumTipoInimigo.cs" />
     <Compile Include="Personagens\Arqueiro.cs" />
     <Compile Include="Personagens\Guerreiro.cs" />
     <Compile Include="Personagens\Inimigo.cs" />
@@ -57,5 +59,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
