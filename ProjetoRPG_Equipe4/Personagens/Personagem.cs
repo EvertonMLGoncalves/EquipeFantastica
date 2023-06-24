@@ -40,15 +40,14 @@ namespace ProjetoRPG_Equipe4.Personagens
         public void Atacar(Personagem inimigo) //~~Helena tudo // ESSE OU O ATACAR PRECISA REFINAR!!
         {
             int danoArma = 0;
-            int danoHabilidade = 0;
             int dano = 0;
             int i = 1;
             int index = 1;
             //Escolhada arma
             if (ListaArmas.Count >0) // vendo se o personagem tem arma
             {
-                if (inimigo.CODIGO == 1 || inimigo.CODIGO == 2 || inimigo.CODIGO ==3) { //Checando se nn é um inimigo
-                    foreach (Arma arma in ListaArmas) Console.WriteLine($"{index} - {arma.Nome}");
+                if (CODIGO == 1 || CODIGO == 2 || CODIGO ==3) { //Checando se nn é um inimigo
+                    foreach (Arma arma in ListaArmas){ Console.WriteLine($"{index} - {arma.Nome}"); index++; }
                     Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
                     i = int.Parse(Console.ReadLine());
                     Arma armaEscolhida = ListaArmas[i - 1];
@@ -56,7 +55,7 @@ namespace ProjetoRPG_Equipe4.Personagens
 
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
                     if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1); }
-                else { 
+                else { // se for inimigo
                     i = random.Next(0, ListaArmas.Count-1);
                     Arma armaEscolhida = ListaArmas[i ];
                     danoArma = armaEscolhida.DanoArma;
@@ -64,11 +63,11 @@ namespace ProjetoRPG_Equipe4.Personagens
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
                     if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i);}
             }
-            else if (!(ListaDeHabilidades.Count > 0)) dano = Forca - inimigo.Defesa;
+            else dano = Forca - inimigo.Defesa;
 
-            
-            
-            int danoTotal = danoArma + danoHabilidade +dano;
+
+            danoArma += Forca;
+            int danoTotal = danoArma + dano;
 
             //Ataque
             if (danoTotal < 0) danoTotal = 0;

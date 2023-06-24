@@ -13,10 +13,10 @@ namespace ProjetoRPG_Equipe4.Personagens
         /*public int Recompensa { get; set; }*/ // o quanto que desconta do XP dos bonzinhos (nao existe mais ) //~~Everton c/ Helena na call
         //public enum Tipo;
 
-        public Inimigo(int dificuldade, int recompença, string nome, string sexo) : base(nome, sexo)
+        public Inimigo(int dificuldade, int recompensa, string nome, string sexo) : base(nome, sexo)
         {
             Nivel = dificuldade; //~~Everton c/ Helena na call
-            XP = recompença; //~~Everton c/ Helena na call
+            XP = recompensa; //~~Everton c/ Helena na call
             Defesa = 1;
             PontosVida = 100;
             Sexo = sexo;

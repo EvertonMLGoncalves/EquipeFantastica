@@ -24,7 +24,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             DanoHabilidade = danoHabilidade;
         }
 
-        public Habilidades criarHabilidade()
+        public Habilidades CriarHabilidade()
         {
             Console.WriteLine("### CRIAR HABILIDADE ###");
             Console.Write("Nome: ");
@@ -40,13 +40,13 @@ namespace ProjetoRPG_Equipe4.Artefatos
             return this;
         }
 
-        public static void dropHabilidade(Personagem perosonagem, Habilidades habilidade) // MVP de associar personagem com habilidade
+        public static void AdicionarHabilidade(Personagem perosonagem, Habilidades habilidade) // MVP de associar personagem com habilidade
         {
             perosonagem.ListaDeHabilidades.Add(habilidade);
             Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {perosonagem.Nome}");
         }
 
-        public void exibirInfo()
+        public void ExibirInfo()
         {
             Console.WriteLine("### INFORMAÇÕES DESSA HABILIDADE ####");
             Console.WriteLine($"Nome: {Nome}");
