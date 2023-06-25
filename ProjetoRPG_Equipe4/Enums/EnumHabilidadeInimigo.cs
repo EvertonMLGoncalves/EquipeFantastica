@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Enums
 {
-    public enum EnumHabilidadeInimigo
+    public enum EnumHabilidadeInimigo // Implementado por Claudia
     {
         Atordoar,
         GiroMortal,

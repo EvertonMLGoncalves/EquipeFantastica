@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Enums
 {
-    public enum EnumTipoInimigo
+    public enum EnumTipoInimigo // Implementado por Claudia
     {
         GuardaDoCastelo,
         CrocodiloDoFosso,

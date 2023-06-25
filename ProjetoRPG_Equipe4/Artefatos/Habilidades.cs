@@ -33,17 +33,17 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Tipo = Console.ReadLine();
             Console.Write("Dano da habilidade: ");
             DanoHabilidade = int.Parse(Console.ReadLine());
-            Console.Write("Quantidade de vezes que pode ser uitilizado: ");
+            Console.Write("Quantidade de vezes que pode ser utilizado: ");
             Utilizado = int.Parse(Console.ReadLine());
-            Console.WriteLine("############################");
+            Console.WriteLine("#########################");
             Console.WriteLine("");
             return this;
         }
 
-        public static void AdicionarHabilidade(Personagem perosonagem, Habilidades habilidade) // MVP de associar personagem com habilidade
+        public static void AdicionarHabilidade(Personagem personagem, Habilidades habilidade) // MVP de associar personagem com habilidade
         {
-            perosonagem.ListaDeHabilidades.Add(habilidade);
-            Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {perosonagem.Nome}");
+            personagem.ListaDeHabilidades.Add(habilidade);
+            Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}");
         }
 
         public void ExibirInfo()
@@ -56,25 +56,42 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Console.WriteLine("");
         }
 
-        
-        
-        public void Atrapalhar(Personagem personagem, Arma arma) // MVP de como +/- (mais pra menos) vai ficar esse rolezinho ~~Helena
+        public void Envenenar(Personagem personagem) // implementado por Claudia
         {
-            switch (arma.HabilidadeArma)
-            {
-                case "Envenenar":
-                    personagem.Status = "Envenenado";
-                    personagem.Forca -= (int)(personagem.Forca * 0.3); break;
-                case "Artodoar":
-                    personagem.Status = "Artodoado";
-                    personagem.Defesa -= (int)(personagem.Defesa * 0.3); break;
-                case "Queimar":
-                    personagem.Status = "Queimado";
-                    personagem.PontosVida -= 5; break;
-            }
+            personagem.Status = "Envenenado";
+            int turnosRemanescentes = 5;
 
+            while(turnosRemanescentes > 0) 
+            {
+                personagem.PontosVida -= 1;
+                turnosRemanescentes--;  
+            }
+        }
+      
+        public void Atordoar(Personagem personagem) // Claudia
+        {
+            personagem.Status = "Atordoado";
+            int turnosRemanescentes = 3;
+
+            while (turnosRemanescentes > 0)
+            {
+                personagem.Defesa -= (int)(personagem.Defesa * 0.3);
+                turnosRemanescentes--;
+            }
         }
 
+        public void Queimar(Personagem personagem) // Claudia
+        {
+            personagem.Status = "Queimado";
+            int turnosRemanescentes = 3;
+            double danoFogo = 0.05;
 
+            while(turnosRemanescentes > 0)
+            {
+                personagem.PontosVida -= (int)(personagem.PontosVida * danoFogo);
+                turnosRemanescentes--;
+                danoFogo += 0.05; // a porcentagem que causa o efeito progressivo de dano do fogo
+            }
+        }
     }
 }
