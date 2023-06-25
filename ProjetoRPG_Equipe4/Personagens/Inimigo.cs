@@ -19,7 +19,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Nivel = dificuldade; //~~Everton c/ Helena na call
             XP = recompensa; //~~Everton c/ Helena na call
             Defesa = 1;
-            PontosVida = 100;
+            PontosVida = 1700;
             Sexo = sexo;
             Nome = nome;
             Forca = 70;
@@ -27,6 +27,21 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável";
             Tipo = tipo;
             Habilidade = habilidade;
+        }
+        //construtor para testes
+        public Inimigo(int dificuldade, int recompensa, string nome, string sexo) : base(nome, sexo)
+        {
+            Nivel = dificuldade; //~~Everton c/ Helena na call
+            XP = recompensa; //~~Everton c/ Helena na call
+            Defesa = 20;
+            PontosVida = 1700;
+            Sexo = sexo;
+            Nome = nome;
+            Forca = 70;
+            XP = 0;
+            Status = "Saudável";
+
+           
         }
         public Inimigo() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call

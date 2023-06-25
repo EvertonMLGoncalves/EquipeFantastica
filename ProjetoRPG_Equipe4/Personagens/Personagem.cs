@@ -15,9 +15,10 @@ namespace ProjetoRPG_Equipe4.Personagens
         public int Defesa { get; set; } //inicia com 1 
         public string Status { get; set; }
         public int XP { get; set; } // Experiencia, qnd vence o adverssario, ele ganha XP 
-        public int CODIGO { get; set; } // adc para fzr o drop de armas //~~Helena
-        public List<Habilidades> ListaDeHabilidades { get; set; }
-        public List<Arma> ListaArmas { get; set; } // adc para fzr o drop de armas //~~Helena
+        public int CODIGO { get; set; } // adc para fzr o drop de armas //~~Helena 
+        public int TurnosSemJogar { get; set; }
+        public List<Habilidades> ListaDeHabilidades = new List<Habilidades>();
+        public List<Arma> ListaArmas = new List<Arma>();   // adicionam-se as armas aqui //~~Helena
 
         public Personagem() { } //~~Helena
 
@@ -31,26 +32,48 @@ namespace ProjetoRPG_Equipe4.Personagens
             XP = 0;
             Status = "Saudável";
         }
-
+        // construtor para testes
+        public Personagem(int id, string nome, string sexo, int pontosVida,
+            int nivel, int forca, int defesa, string status, int xP,
+            int codigo, int turnosSemJogar)
+        {
+            Id = id;
+            Nome = nome;
+            Sexo = sexo;
+            PontosVida = pontosVida;
+            Nivel = nivel;
+            Forca = forca;
+            Defesa = defesa;
+            Status = status;
+            XP = xP;
+            CODIGO = codigo;
+            TurnosSemJogar = turnosSemJogar;
+        }
 
         Random random = new Random();
         public void Atacar(Personagem inimigo) //~~Helena tudo // ESSE OU O ATACAR PRECISA REFINAR!!
         {
             int danoArma = 0;
             int dano = 0;
+            int danoHabilidade = 0;
             int i = 1;
             int index = 1;
             //Escolhada arma
             if (ListaArmas.Count > 0) // vendo se o personagem tem arma
             {
                 if (CODIGO == 1 || CODIGO == 2 || CODIGO == 3)
-                { //Checando se nn é um inimigo
-                    foreach (Arma arma in ListaArmas) { Console.WriteLine($"{index} - {arma.Nome}"); index++; }
+                { //Checando se nn é um inimigo 
+                    Console.Clear(); //Everton
+                    foreach (Arma arma in ListaArmas)
+                    {
+                        Console.WriteLine($"{index} - {arma.Nome}");
+                        index++;
+                    }
+                    index = 1;
                     Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
                     i = int.Parse(Console.ReadLine());
                     Arma armaEscolhida = ListaArmas[i - 1];
                     danoArma = armaEscolhida.DanoArma;
-
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
                     if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1);
                 }
@@ -65,14 +88,35 @@ namespace ProjetoRPG_Equipe4.Personagens
                 }
             }
             else dano = Forca - inimigo.Defesa;
-
-
             danoArma += Forca;
-            int danoTotal = danoArma + dano;
+            // Everton ~ Implementando o sistema de habilidades
+            //Perguntando se o personagem vai querer usar uma habilidade e vendo se ele tem alguma:
+            if (ListaDeHabilidades.Count > 0)
+            {
+                Console.WriteLine("Escolha uma habilidade: \n0 - para sair e atacar");
+                foreach (Habilidades habilidadee in ListaDeHabilidades)
+                {
+                    Console.WriteLine($"{index} - {habilidadee.Nome}");
+                    index++;
+                }
+                i = int.Parse(Console.ReadLine());
+                if (i > 0)
+                {
+                    Habilidades habilidade = ListaDeHabilidades[i - 1];
+                    Habilidades.UsarHabilidade(habilidade, inimigo);
+                    danoHabilidade = habilidade.DanoHabilidade;
+                }
+            }
+
+            int danoTotal = danoArma + dano + danoHabilidade;
 
             //Golpe crítico
             bool golpeCritico = false; //checar se houve golpe critico para a saida de dados
-            if (GolpeCritico()) {danoTotal = danoTotal + (int)(danoTotal * 0.5); golpeCritico = true;} //50% mais de dano ~~Dani Alves
+            if (GolpeCritico())
+            {
+                danoTotal = danoTotal + (int)(danoTotal * 0.5);
+                golpeCritico = true;
+            } //50% mais de dano ~~Dani Alves
 
             //Ataque
             if (danoTotal < 0) danoTotal = 0;
@@ -123,6 +167,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Console.WriteLine("Digite o XP do Persongem:");
             XP = int.Parse(Console.ReadLine());
             ListaArmas = new List<Arma>(); ListaDeHabilidades = new List<Habilidades>();
+            Console.Clear(); //Everton
             return this;
         }
 
@@ -165,15 +210,41 @@ namespace ProjetoRPG_Equipe4.Personagens
                 }
             }
         }
-
+        public void VerificarStatus() //~Everton
+        {
+            if (Status == "Atordoado")
+            {
+                Console.WriteLine($"{Nome} está atordoado e ficará {TurnosSemJogar} turno(s) sem jogar");
+                Defesa -= (int)(Defesa * 0.3);
+                TurnosSemJogar--;
+            }
+            else if (Status == "Queimado")
+            {
+                Console.WriteLine($"{Nome} está queimando e ficará {TurnosSemJogar} turno(s) sem jogar");
+                PontosVida -= (int)(PontosVida * 0.15 * TurnosSemJogar);
+                TurnosSemJogar--;
+            }
+            else if (Status == "Adormecido")
+            {
+                Console.WriteLine($"{Nome} está adormecido e ficará {TurnosSemJogar} turno(s) sem jogar");
+                TurnosSemJogar--;
+            }
+            else if (Status == "Envenenado")
+            {
+                Console.WriteLine($"{Nome}  está envenenado e ficará  {TurnosSemJogar} turno(s) sem jogar");
+                PontosVida -= (int)(PontosVida * 0.10);
+                TurnosSemJogar--;
+            }
+        }
 
         private bool GolpeCritico() // ~~Dani Alves c/ implementação de Helena
         {
             int chanceCritico = 10; //10%
 
             Random random = new Random();
-            return random.Next(100) < chanceCritico;
+            return random.Next(1, 101) < chanceCritico; // incrementação da lógica (mudou-se 100 para 1,101)
         }
+
 
     }
 }

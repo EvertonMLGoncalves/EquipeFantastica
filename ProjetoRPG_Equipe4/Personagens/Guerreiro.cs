@@ -19,13 +19,14 @@ namespace ProjetoRPG_Equipe4.Personagens
             Id = id;
             Nivel = 1;
             Furia = 1;
-            Defesa = 1;
-            PontosVida = 100;
+            Defesa = 30;
+            PontosVida = 1500;
             Sexo = sexo;
             Nome = nome;
             Forca = 90;
             XP = 0;
             Status = "Saudável";
+            CODIGO = 1;
         }
         public Guerreiro() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call

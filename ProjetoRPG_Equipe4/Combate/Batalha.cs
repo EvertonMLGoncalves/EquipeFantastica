@@ -16,14 +16,15 @@ namespace ProjetoRPG_Equipe4.Combate
             int vidaInicialInimigo = inimigo.PontosVida;
             while (flag)
             {
+                Console.WriteLine($"Vida atual de {inimigo.Nome}: {inimigo.PontosVida}");
+                Console.WriteLine($"Vida atual do seu personagem: {jogador.PontosVida}");
                 Console.WriteLine("Digite: \n1-Para atacar \n2-para fugir");
                 int op = int.Parse(Console.ReadLine());
                 switch (op)
                 {
                     case 1:
-                        jogador.Atacar(inimigo);
                         Console.WriteLine("Você está atacando!\n");
-                        //jogador.Atacar(inimigo);
+                        jogador.Atacar(inimigo);
                         Console.WriteLine("==========================");
                         Thread.Sleep(1000);
                         if (inimigo.PontosVida <= 0)
@@ -36,7 +37,15 @@ namespace ProjetoRPG_Equipe4.Combate
                             flag = false;
                             break;
                         }
-                        inimigo.Atacar(jogador);
+                        if (inimigo.TurnosSemJogar != 0) //~~Everton
+                        {
+                            inimigo.VerificarStatus();
+                        }
+                        else  //~~Everton
+                        {
+                            Console.WriteLine("Você está sendo atacado!");
+                            inimigo.Atacar(jogador);
+                        }
                         if (jogador.PontosVida <= 0)
                         {
                             Console.WriteLine("\n****************** \nGAME OVER!  " +
@@ -47,7 +56,6 @@ namespace ProjetoRPG_Equipe4.Combate
                             Thread.Sleep(10000);
                             flag = false;
                             break;
-
                         }
                         Console.ReadKey();
                         Console.Clear();
@@ -104,8 +112,8 @@ namespace ProjetoRPG_Equipe4.Combate
 
         }
 
-
-        public void ReceberXP(int experiencia) // ~~Dani Alves
+/*
+        public static void ReceberXP(int experiencia) // ~~Dani Alves
         {
             XP += experiencia;
 
@@ -118,7 +126,8 @@ namespace ProjetoRPG_Equipe4.Combate
 
         private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
         {
-            return 100 * nivel; //100 de xp para o prox nivel
+            return 100 * nivel; //100 de xp para o prox nivel*/
         }
     }
+
 

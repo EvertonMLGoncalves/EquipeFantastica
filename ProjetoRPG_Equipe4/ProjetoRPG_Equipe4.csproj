@@ -46,6 +46,7 @@
     <Compile Include="Artefatos\Armas.cs" />
     <Compile Include="Artefatos\Habilidades.cs" />
     <Compile Include="Combate\Batalha.cs" />
+    <Compile Include="Enums\EnumTipoHabilidadePersonagem.cs" />
     <Compile Include="Enums\EnumHabilidadeInimigo.cs" />
     <Compile Include="Enums\EnumTipoInimigo.cs" />
     <Compile Include="Personagens\Arqueiro.cs" />

@@ -27,12 +27,25 @@ namespace ProjetoRPG_Equipe4.Artefatos
             DanoArma = danoBase;
 
         }
-
-        public static void DroparArmas(Personagem personagem, Arma arma) // ~Helena
+        //construtor completo para testes
+        public Arma(int id, string nome, int danoArma, int personagemApropriado, string categoria, int raridade, string habilidadeArma)
         {
-            if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2);
+            Id = id;
+            Nome = nome;
+            DanoArma = danoArma;
+            PersonagemApropriado = personagemApropriado;
+            Categoria = categoria;
+            Raridade = raridade;
+            HabilidadeArma = habilidadeArma;
+        }
+
+        public static void AdicionarArma(Personagem personagem, Arma arma) // ~Helena // Everton: Mudei o nome para "AdicionarArmas"
+        {
+            if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2); 
             personagem.ListaArmas.Add(arma);
-            Console.WriteLine($"{arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso!");
+            Console.WriteLine($"{arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso!"); 
+            Console.ReadKey(); //Everton
+            Console.Clear(); //Everton
         }
 
 
@@ -54,7 +67,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Console.Write("Habilidade: ");
             HabilidadeArma = Console.ReadLine();
             Console.WriteLine("###########################");
-            Console.WriteLine();
+            Console.Clear(); //Everton:Colocando o console.clear()
             return this;
         }
         string apropriado = null;//~~Helena
