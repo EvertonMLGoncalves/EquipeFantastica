@@ -93,5 +93,17 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 danoFogo += 0.05; // a porcentagem que causa o efeito progressivo de dano do fogo
             }
         }
+
+        public void Adormecer(Personagem personagem) // Claudia
+        {
+            personagem.Status = "Adormecido";
+            int turnosRemanescentes = 1;
+
+            while (turnosRemanescentes > 0)
+            {
+                // O jogador nao faz nada 
+                turnosRemanescentes--;
+            }
+        }
     }
 }
