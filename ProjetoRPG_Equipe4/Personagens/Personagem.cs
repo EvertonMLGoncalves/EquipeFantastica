@@ -16,7 +16,12 @@ namespace ProjetoRPG_Equipe4.Personagens
         public string Status { get; set; }
         public int XP { get; set; } // Experiencia, qnd vence o adverssario, ele ganha XP 
         public int CODIGO { get; set; } // adc para fzr o drop de armas //~~Helena 
-        public int TurnosSemJogar { get; set; }
+        public int TurnosAfetado { get; set; } // O antigo TurnosSemJogar 
+        public int DanoPorTurno { get; set; } // dano correspondente à habilidade utilizada, 
+      /*  usado para controlar o dano e nao impedir o inimigo de jogar(exceto na habilidade de Adormecer)*/
+
+
+
         public List<Habilidades> ListaDeHabilidades = new List<Habilidades>();
         public List<Arma> ListaArmas = new List<Arma>();   // adicionam-se as armas aqui //~~Helena
 
@@ -35,7 +40,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         // construtor para testes
         public Personagem(int id, string nome, string sexo, int pontosVida,
             int nivel, int forca, int defesa, string status, int xP,
-            int codigo, int turnosSemJogar)
+            int codigo, int turnosafetado)
         {
             Id = id;
             Nome = nome;
@@ -47,7 +52,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = status;
             XP = xP;
             CODIGO = codigo;
-            TurnosSemJogar = turnosSemJogar;
+            TurnosAfetado = turnosafetado;
         }
 
         Random random = new Random();
@@ -210,31 +215,47 @@ namespace ProjetoRPG_Equipe4.Personagens
                 }
             }
         }
-        public void VerificarStatus() //~Everton
+        public void VerificarDano() //~Everton
         {
             if (Status == "Atordoado")
             {
-                Console.WriteLine($"{Nome} está atordoado e ficará {TurnosSemJogar} turno(s) sem jogar");
+                Console.WriteLine($"{Nome} está atordoado");
                 Defesa -= (int)(Defesa * 0.3);
-                TurnosSemJogar--;
+                TurnosAfetado--;
+                if (TurnosAfetado == 0) Defesa += (int)(Defesa * 0.3); 
             }
             else if (Status == "Queimado")
             {
-                Console.WriteLine($"{Nome} está queimando e ficará {TurnosSemJogar} turno(s) sem jogar");
-                PontosVida -= (int)(PontosVida * 0.15 * TurnosSemJogar);
-                TurnosSemJogar--;
+                Console.WriteLine($"{Nome} está queimando e queimará durante {TurnosAfetado} turno(s)");
+                PontosVida -= DanoPorTurno * TurnosAfetado;
+                TurnosAfetado--;
+                if (TurnosAfetado == 0) DanoPorTurno = 0;
             }
             else if (Status == "Adormecido")
             {
-                Console.WriteLine($"{Nome} está adormecido e ficará {TurnosSemJogar} turno(s) sem jogar");
-                TurnosSemJogar--;
+                Console.WriteLine($"{Nome} está adormecido e ficará {TurnosAfetado} turno(s) sem jogar");
+                TurnosAfetado--;
             }
             else if (Status == "Envenenado")
             {
-                Console.WriteLine($"{Nome}  está envenenado e ficará  {TurnosSemJogar} turno(s) sem jogar");
-                PontosVida -= (int)(PontosVida * 0.10);
-                TurnosSemJogar--;
+                Console.WriteLine($"{Nome}  está envenenado e ficará envenenenado por {TurnosAfetado} turno(s)");
+                PontosVida -= (int)(PontosVida * 0.1);
+                TurnosAfetado--;
+                if (TurnosAfetado == 0) DanoPorTurno = 0;
             }
+        } 
+        public bool VerificarStatus()
+        {
+            if (Status == "Atordoado" || Status == "Queimado" || Status == "Envenenado")
+            {
+                return true;
+            }
+            else if (Status == "Adormecido")
+            {
+                return false;
+            }
+            else return true;
+
         }
 
         private bool GolpeCritico() // ~~Dani Alves c/ implementação de Helena

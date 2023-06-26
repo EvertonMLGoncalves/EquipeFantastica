@@ -11,6 +11,6 @@ namespace ProjetoRPG_Equipe4.Enums
         Envenenante, 
         Atordoante,
         Incendiante, 
-        Sedante,
+        Sedante, 
     }
 }

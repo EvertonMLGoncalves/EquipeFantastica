@@ -37,9 +37,18 @@ namespace ProjetoRPG_Equipe4.Combate
                             flag = false;
                             break;
                         }
-                        if (inimigo.TurnosSemJogar != 0) //~~Everton
+                        if (inimigo.TurnosAfetado != 0) //~~Everton
                         {
-                            inimigo.VerificarStatus();
+                            if (inimigo.VerificarStatus())
+                            {
+                                inimigo.VerificarDano();
+                                Console.WriteLine("Você está sendo atacado!");
+                                inimigo.Atacar(jogador);
+                            }  
+                            else
+                            {
+                                Console.WriteLine($"{inimigo.Nome} está dormindo e ficará {inimigo.TurnosAfetado} sem jogar");
+                            }
                         }
                         else  //~~Everton
                         {
@@ -70,8 +79,6 @@ namespace ProjetoRPG_Equipe4.Combate
                         Console.WriteLine("Valor inválido");
                         break;
                 }
-
-
             }
 
         }
