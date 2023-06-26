@@ -61,6 +61,8 @@ namespace ProjetoRPG_Equipe4
              
             Arma arma1 = new Arma(1, "Espada", 60, 1, "Espadas", 1, "");
             Arma arma2 = new Arma(1, "Espada Longa", 90, 1, "Espadas", 1, "");
+            Arma.VerificarHabilidadeItem(arma1, g1);
+            Arma.VerificarHabilidadeItem(arma2, g1);
             Arma.AdicionarArma(g1, arma1);
             Arma.AdicionarArma(n1, arma2);
             Arma.AdicionarArma(g1, arma2);
@@ -70,8 +72,8 @@ namespace ProjetoRPG_Equipe4
                 Console.WriteLine(arma.Nome);
             }*/
 
-            Habilidades h1 = new Habilidades("Bola de fogo", Enums.TipoHabilidade.Incendiante, 1, 30);
-            Habilidades.AdicionarHabilidade(g1, h1);
+            /*Habilidades h1 = new Habilidades("Bola de fogo", Enums.TipoHabilidade.Incendiante, 1, 30);
+            Habilidades.AdicionarHabilidade(g1, h1);*/
 
             Batalha.IniciarBatalha(g1, n1);
 

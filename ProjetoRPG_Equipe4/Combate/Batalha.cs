@@ -42,9 +42,9 @@ namespace ProjetoRPG_Equipe4.Combate
                             if (inimigo.VerificarStatus())
                             {
                                 inimigo.VerificarDano();
-                                Console.WriteLine("Você está sendo atacado!");
+                                /*Console.WriteLine("Você está sendo atacado!");*/
                                 inimigo.Atacar(jogador);
-                            }  
+                            }
                             else
                             {
                                 Console.WriteLine($"{inimigo.Nome} está dormindo e ficará {inimigo.TurnosAfetado} sem jogar");
@@ -52,7 +52,7 @@ namespace ProjetoRPG_Equipe4.Combate
                         }
                         else  //~~Everton
                         {
-                            Console.WriteLine("Você está sendo atacado!");
+                            /*Console.WriteLine("Você está sendo atacado!");*/
                             inimigo.Atacar(jogador);
                         }
                         if (jogador.PontosVida <= 0)
@@ -99,7 +99,7 @@ namespace ProjetoRPG_Equipe4.Combate
             else if (inimigo.PontosVida <= 0)
             {
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("Resultados da Batalha:");
+                Console.WriteLine("Resultados da Batalha:"); 
                 Console.WriteLine($"{inimigo.Nome} foi derrotado!");
                 Console.WriteLine($"Vida atual de {jogador}: {jogador.PontosVida}");
                 Console.WriteLine($"Dano causado por {inimigo.Nome}: {vidainicialjogador - jogador.PontosVida}");
@@ -119,8 +119,8 @@ namespace ProjetoRPG_Equipe4.Combate
 
         }
 
-/*
-        public static void ReceberXP(int experiencia) // ~~Dani Alves
+
+        /*public static void ReceberXP(int experiencia) // ~~Dani Alves
         {
             XP += experiencia;
 
@@ -133,8 +133,9 @@ namespace ProjetoRPG_Equipe4.Combate
 
         private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
         {
-            return 100 * nivel; //100 de xp para o prox nivel*/
-        }
+            return 100 * nivel; //100 de xp para o prox nivel
+        }*/
     }
+}
 
 
