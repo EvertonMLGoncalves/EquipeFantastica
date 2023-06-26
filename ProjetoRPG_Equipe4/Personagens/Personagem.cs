@@ -266,6 +266,23 @@ namespace ProjetoRPG_Equipe4.Personagens
             return random.Next(1, 101) < chanceCritico; // incrementação da lógica (mudou-se 100 para 1,101)
         }
 
+        public void ReceberXP(int experiencia) // ~~Dani Alves
+        {
+            XP += experiencia;
 
+            int xpNecessario = CalcularXpNecessarioNivel(Nivel);
+            if (XP >= xpNecessario)
+            {
+                Nivel++;
+                Forca += 10;
+                Defesa += 5;
+                PontosVida += 10;
+            }
+        }
+
+        private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
+        {
+            return 100 * nivel; //100 de xp para o prox nivel
+        }
     }
 }
