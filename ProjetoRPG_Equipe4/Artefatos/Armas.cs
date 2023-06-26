@@ -7,7 +7,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
     public class Arma
     {
 
-
         public int Id { get; set; }
 
         public string Nome { get; set; }
