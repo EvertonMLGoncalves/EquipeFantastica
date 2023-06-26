@@ -65,7 +65,7 @@ namespace ProjetoRPG_Equipe4
             Arma.AdicionarArma(n1, arma2);
             Arma.AdicionarArma(g1, arma2);
 
-            /*foreach (var arma in g1.ListaArmas)2 
+            /*foreach (var arma in g1.ListaArmas)
             {
                 Console.WriteLine(arma.Nome);
             }*/

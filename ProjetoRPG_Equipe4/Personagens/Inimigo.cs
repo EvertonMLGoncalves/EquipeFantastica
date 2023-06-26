@@ -23,7 +23,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Sexo = sexo;
             Nome = nome;
             Forca = 70;
-            XP = 10;
+            XP = 50;
             Status = "Saudável";
             Tipo = tipo;
             Habilidade = habilidade;
@@ -38,7 +38,7 @@ namespace ProjetoRPG_Equipe4.Personagens
             Sexo = sexo;
             Nome = nome;
             Forca = 70;
-            XP = 0;
+            XP = 50;
             Status = "Saudável";
 
            
