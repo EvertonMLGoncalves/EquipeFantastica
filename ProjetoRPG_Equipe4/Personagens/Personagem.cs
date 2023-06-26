@@ -253,6 +253,9 @@ namespace ProjetoRPG_Equipe4.Personagens
             if (XP >= xpNecessario)
             {
                 Nivel++;
+                Forca += 10;
+                Defesa += 5;
+                PontosVida += 10;
             }
         }
 

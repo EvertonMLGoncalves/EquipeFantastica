@@ -29,8 +29,7 @@ namespace ProjetoRPG_Equipe4.Combate
                         if (inimigo.PontosVida <= 0)
                         {
                             Console.WriteLine("VOCÊ VENCEU!!!!!!!!");
-                            XPganho += 10;// ~~Helena
-                            TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador;
+                            TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador);
                             Thread.Sleep(10000);
                             Console.Clear();
                             flag = false;
@@ -77,6 +76,7 @@ namespace ProjetoRPG_Equipe4.Combate
         public static void TerminarBatalha(Personagem jogador, int vidainicialjogador, Personagem inimigo, int vidainicialinimigo)
         {
             jogador.ReceberXP(inimigo.XP);
+
             if (jogador.PontosVida <= 0)
             {
                 Console.WriteLine("------------------------------------------------------");
