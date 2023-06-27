@@ -25,13 +25,13 @@ public class Jogo
 
         // Turno 3
         Habilidades habilidade3 = new Habilidades("Superdoado", TipoHabilidade.Atordoante, 1, 90);
-        Inimigo inimigo3 = new Inimigo("Gragula da torre", "Femea", 7, 25, 20, 30, 30, EnumTipoInimigo.GargulaDaTorre, EnumHabilidadeInimigo.Incendiar);
+        Inimigo inimigo3 = new Inimigo("Gragula da torre", "Femea", 7, 25, 20, 30, EnumTipoInimigo.GargulaDaTorre, EnumHabilidadeInimigo.Incendiar);
 
         // Turno 4
         Inimigo inimigo4 = new Inimigo("Esqueleto Malígno", "Homem", 9, 35, 30, 40, EnumTipoInimigo.EsqueletoMaligno, EnumHabilidadeInimigo.Regeneracao);
         Arma arma4 = new Arma(3, "Bola de fogo suprema", 50, 3, 3, "Bolada na cara!");
 
-        Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1,);
+        Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1);
         Console.ReadKey();
 
 
@@ -171,11 +171,11 @@ public class Jogo
         /* Yoshi.Load();
          Yoshi.PlayLooping();*/
         Console.WriteLine($"\tOpa! O que é isso aqui? eu acho que é uma {arma.Nome}!");
-        Thread.Sleep(700)
+        Thread.Sleep(700);
         Arma.AdicionarArma(jogador, arma);
         Thread.Sleep(5000);
         Console.Clear();
-        flag = true;
+        bool flag = true;
         while (flag)
         {
             arma.ExibirInfo();
@@ -202,7 +202,7 @@ public class Jogo
         Console.WriteLine("#################################");
         int response = int.Parse(Console.ReadLine());
         Console.Clear() ;
-        if(response == 1)
+        if (response == 1)
         {
             Console.WriteLine("\t############################################################");
             Console.WriteLine("\tDE: Lelezinha");
@@ -213,10 +213,10 @@ public class Jogo
             Console.WriteLine("\tBeijinhos beijinhos sua irmã favorita.\n");
             Console.WriteLine("\t############################################################");
             Thread.Sleep(8000);
-            Habilidades.AdicionarHabilidade(jogador,habilidade);
+            Habilidades.AdicionarHabilidade(jogador, habilidade);
             Thread.Sleep(2000);
             Console.Clear();
-            flag = true;
+            bool flag = true;
             while (flag)
             {
                 habilidade.ExibirInfo();
@@ -226,7 +226,7 @@ public class Jogo
             }
             Console.Clear();
         }
-        else Console.WriteLine("OK!")
+        else Console.WriteLine("OK!");
         
         Console.WriteLine($"\tEita! a {inimigo.Nome} está se virando, a batalha irá começar!");
         Thread.Sleep(2400);
@@ -272,7 +272,7 @@ public class Jogo
         Console.Clear();
     }
 
-    public void QuintoTurno
+    
 
 
 }
