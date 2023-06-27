@@ -23,7 +23,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Nome = nome;
             Tipo = tipo; 
             Utilizado = utilizado;
-            DanoHabilidade = danoHabilidade;
+            DanoHabilidade = danoHabilidade; 
         }
 
         public Habilidades CriarHabilidade()

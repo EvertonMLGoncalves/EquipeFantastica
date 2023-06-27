@@ -1,11 +1,11 @@
-﻿using ProjetoRPG_Equipe4.Personagens;
+﻿using ProjetoRPG_Equipe4.Enums;
+using ProjetoRPG_Equipe4.Personagens;
 using System;
 
 namespace ProjetoRPG_Equipe4.Artefatos
 {
     public class Arma
     {
-
 
         public int Id { get; set; }
 
@@ -83,6 +83,41 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Console.WriteLine($"# Dano da arma: {DanoArma}\t\t   #");
             Console.WriteLine($"# Raridade: {Raridade}\t\t\t   #");
             Console.WriteLine("####################################");
+        }
+       
+        public static void VerificarHabilidadeItem(Arma arma, Personagem personagem)
+        {
+            Random random = new Random();
+            if (arma.Raridade >= 1 && arma.Raridade <= 2)
+            {
+                int index = random.Next(0, 2);
+                if (index == 0)
+                {
+                    Console.WriteLine("Esta arma não tem habilidade adicional");
+                }
+                else if (index == 1)
+                {
+                    Console.WriteLine($"Você ganhou uma habilidade do tipo {TipoHabilidade.Atordoante}");
+                    Habilidades habilidade = new Habilidades("Golpe Certeiro", TipoHabilidade.Atordoante, 2, 0);
+                    Habilidades.AdicionarHabilidade(personagem, habilidade);
+                }
+            }
+            if (arma.Raridade > 4 && arma.Raridade <= 10)
+            {
+                int index = random.Next(2, 5);
+                if (index == 0)
+                {
+                    Console.WriteLine("Esta arma não tem habilidade adicional");
+                }
+                else if (index == 1)
+                {
+                    Console.WriteLine($"Você ganhou uma habilidade do tipo {TipoHabilidade.Envenenante}");
+                    Habilidades habilidade = new Habilidades("Golpe de Mestre", TipoHabilidade.Envenenante, 1, 50);
+                    Habilidades.AdicionarHabilidade(personagem, habilidade);
+                }
+            }
+
+
         }
     }
 }

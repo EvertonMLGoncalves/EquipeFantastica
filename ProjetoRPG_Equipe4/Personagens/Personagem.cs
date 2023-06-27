@@ -1,7 +1,12 @@
 ﻿using ProjetoRPG_Equipe4.Artefatos;
 using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
 using System.Threading;
+=======
+using System.Security.Cryptography;
+
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
 namespace ProjetoRPG_Equipe4.Personagens
 {
     public class Personagem
@@ -18,7 +23,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         public int CODIGO { get; set; } // adc para fzr o drop de armas //~~Helena 
         public int TurnosAfetado { get; set; } // O antigo TurnosSemJogar 
         public int DanoPorTurno { get; set; } // dano correspondente à habilidade utilizada, 
-      /*  usado para controlar o dano e nao impedir o inimigo de jogar(exceto na habilidade de Adormecer)*/
+        /*  usado para controlar o dano e nao impedir o inimigo de jogar(exceto na habilidade de Adormecer)*/
 
 
 
@@ -98,13 +103,17 @@ namespace ProjetoRPG_Equipe4.Personagens
             danoArma += Forca;
             // Everton ~ Implementando o sistema de habilidades
             //Perguntando se o personagem vai querer usar uma habilidade e vendo se ele tem alguma:
-            if (ListaDeHabilidades.Count > 0)
+            if (ListaDeHabilidades.Count > 0 && ListaDeHabilidades.Exists(h => h.Utilizado != 0))
             {
                 Console.WriteLine("### HABILIDADES ###");
                 Console.WriteLine("# 0 - Sair e Atacar");
                 foreach (Habilidades habilidadee in ListaDeHabilidades)
                 {
+<<<<<<< HEAD
                     Console.WriteLine($"# {index} - {habilidadee.Nome}");
+=======
+                    Console.WriteLine($"{index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                     index++;
                 }
                 Console.WriteLine("#####################");
@@ -116,27 +125,39 @@ namespace ProjetoRPG_Equipe4.Personagens
                     Habilidades habilidade = ListaDeHabilidades[i - 1];
                     Habilidades.UsarHabilidade(habilidade, inimigo);
                     danoHabilidade = habilidade.DanoHabilidade;
-                }
+                    ListaDeHabilidades[i - 1].Utilizado--;
+                } 
+                Console.Clear(); //~Everton 26/06
             }
 
             int danoTotal = danoArma + dano + danoHabilidade;
-
-            //Golpe crítico
-            bool golpeCritico = false; //checar se houve golpe critico para a saida de dados
-            if (GolpeCritico())
-            {
-                danoTotal = danoTotal + (int)(danoTotal * 0.5);
-                golpeCritico = true;
-            } //50% mais de dano ~~Dani Alves
-
-            //Ataque
+            Console.WriteLine($"{Nome} está atacando {inimigo.Nome} com tudo!!");
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
+<<<<<<< HEAD
             Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");
             Thread.Sleep(2000);
             Console.Clear();
 
             if (golpeCritico) { Console.WriteLine($"# {inimigo.Nome} recebeu um GOLPE CRÍTICO! Aumentando em 50% o seu dano :( #"); Thread.Sleep(2000); Console.Clear(); }// ~~Dani Alves com alteração de Helena na frase e sua localização
+=======
+            if (inimigo.PontosVida >= 0)
+            {
+                Console.WriteLine($"HP - {inimigo.PontosVida} \nDano Sofrido - {danoTotal}");
+                //Golpe crítico 
+                bool golpeCritico = false; //checar se houve golpe critico para a saida de dados
+                if (GolpeCritico())
+                {
+                    Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico de {(int)(danoTotal * 0.5)}");
+                    danoTotal = danoTotal + (int)(danoTotal * 0.5);
+                    golpeCritico = true;
+                } //50% mais de dano ~~Dani Alves
+            } 
+            else Console.WriteLine($"{inimigo.Nome} morreu \nDano Sofrido: {danoTotal}");
+           /* //Ataque
+            
+            // ~~Dani Alves com alteração de Helena na frase e sua localização
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
             //Caso morte ocorra
             if (inimigo.PontosVida <= 0)
             {
@@ -144,11 +165,16 @@ namespace ProjetoRPG_Equipe4.Personagens
                 Thread.Sleep(2500); Console.Clear();
             }
             //Caso morte não ocorra
+<<<<<<< HEAD
             else
             {
                 Console.WriteLine($"## Dano Recebido: {danoTotal} ##\n## Vida de {inimigo.Nome}: {inimigo.PontosVida} ##");
                 Thread.Sleep(2500); Console.Clear();
             }
+=======
+            else Console.WriteLine($"Dano Recebido: {danoTotal} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");*/
+
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
         }
 
         //<>
@@ -231,28 +257,28 @@ namespace ProjetoRPG_Equipe4.Personagens
                 Console.WriteLine($"{Nome} está atordoado");
                 Defesa -= (int)(Defesa * 0.3);
                 TurnosAfetado--;
-                if (TurnosAfetado == 0) Defesa += (int)(Defesa * 0.3); 
+                if (TurnosAfetado == 0) Defesa += (int)(Defesa * 0.3);
             }
             else if (Status == "Queimado")
             {
-                Console.WriteLine($"{Nome} está queimando e queimará durante {TurnosAfetado} turno(s)");
+                Console.WriteLine($"{Nome} está queimando: {TurnosAfetado} turno(s) restante(s)");
                 PontosVida -= DanoPorTurno * TurnosAfetado;
                 TurnosAfetado--;
                 if (TurnosAfetado == 0) DanoPorTurno = 0;
             }
             else if (Status == "Adormecido")
             {
-                Console.WriteLine($"{Nome} está adormecido e ficará {TurnosAfetado} turno(s) sem jogar");
+                Console.WriteLine($"{Nome} está adormecido: {TurnosAfetado} turno(s) restante(s)");
                 TurnosAfetado--;
             }
             else if (Status == "Envenenado")
             {
-                Console.WriteLine($"{Nome}  está envenenado e ficará envenenenado por {TurnosAfetado} turno(s)");
+                Console.WriteLine($"{Nome}  está envenenado: {TurnosAfetado} turno(s) restante(s)");
                 PontosVida -= (int)(PontosVida * 0.1);
                 TurnosAfetado--;
                 if (TurnosAfetado == 0) DanoPorTurno = 0;
             }
-        } 
+        }
         public bool VerificarStatus()
         {
             if (Status == "Atordoado" || Status == "Queimado" || Status == "Envenenado")
@@ -275,6 +301,23 @@ namespace ProjetoRPG_Equipe4.Personagens
             return random.Next(1, 101) < chanceCritico; // incrementação da lógica (mudou-se 100 para 1,101)
         }
 
+        public void ReceberXP(int experiencia) // ~~Dani Alves
+        {
+            XP += experiencia;
 
+            int xpNecessario = CalcularXpNecessarioNivel(Nivel);
+            if (XP >= xpNecessario)
+            {
+                Nivel++;
+                Forca += 10;
+                Defesa += 5;
+                PontosVida += 10;
+            }
+        }
+
+        private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
+        {
+            return 100 * nivel; //100 de xp para o prox nivel
+        }
     }
 }

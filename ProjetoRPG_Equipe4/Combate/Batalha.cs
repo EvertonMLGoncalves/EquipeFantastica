@@ -10,7 +10,6 @@ namespace ProjetoRPG_Equipe4.Combate
 
         public static void IniciarBatalha(Personagem jogador, Personagem inimigo) // ESSE OU O ATACAR PRECISA REFINAR!!
         {
-            int XPganho = 0; // Adicionei o XP ~Helena
             bool flag = true;
             int vidaInicialJogador = jogador.PontosVida;
             int vidaInicialInimigo = inimigo.PontosVida;
@@ -39,10 +38,16 @@ namespace ProjetoRPG_Equipe4.Combate
                         Thread.Sleep(1000);
                         if (inimigo.PontosVida <= 0)
                         {
+<<<<<<< HEAD
                             Console.WriteLine("■O■O■O■O■O■ VOCÊ VENCEU ■O■O■O■O■O■");
                             XPganho += 10;// ~~Helena
                             TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador, XPganho);
                             Thread.Sleep(5000);
+=======
+                            Console.WriteLine("VOCÊ VENCEU!!!!!!!!");
+                            TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador);
+                            Thread.Sleep(10000);
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                             Console.Clear();
                             flag = false;
                             break;
@@ -67,9 +72,16 @@ namespace ProjetoRPG_Equipe4.Combate
                         }
                         if (jogador.PontosVida <= 0)
                         {
+<<<<<<< HEAD
                             Console.WriteLine("****************** GAME OVER! ******************");
                             Console.Clear();
                             TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
+=======
+                            Console.WriteLine("\n****************** \nGAME OVER!  " +
+                                "\n******************");
+                            Console.WriteLine("--------------------------");
+                            TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo);
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                             Console.Clear();
                             Thread.Sleep(5000);
                             flag = false;
@@ -80,8 +92,13 @@ namespace ProjetoRPG_Equipe4.Combate
                         break;
                     case 2:
                         Console.WriteLine("Fugindo...");
+<<<<<<< HEAD
                         TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
                         Thread.Sleep(5000);
+=======
+                        TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo);
+                        Thread.Sleep(10000);
+>>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                         Console.Clear();
                         break;
                     default:
@@ -91,9 +108,10 @@ namespace ProjetoRPG_Equipe4.Combate
             }
 
         }
-        public static void TerminarBatalha(Personagem jogador, int vidainicialjogador, Personagem inimigo, int vidainicialinimigo, int XPGanho)
+        public static void TerminarBatalha(Personagem jogador, int vidainicialjogador, Personagem inimigo, int vidainicialinimigo)
         {
-            jogador.XP += XPGanho;
+            jogador.ReceberXP(inimigo.XP);
+
             if (jogador.PontosVida <= 0)
             {
                 
@@ -126,21 +144,6 @@ namespace ProjetoRPG_Equipe4.Combate
 
         }
 
-/*
-        public static void ReceberXP(int experiencia) // ~~Dani Alves
-        {
-            XP += experiencia;
-
-            int xpNecessario = CalcularXpNecessarioNivel(Nivel);
-            if (XP >= xpNecessario)
-            {
-                Nivel++;
-            }
-        }
-
-        private int CalcularXpNecessarioNivel(int nivel) // ~~Dani Alves
-        {
-            return 100 * nivel; //100 de xp para o prox nivel*/
         }
     }
 
