@@ -45,7 +45,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
         {
             personagem.ListaDeHabilidades.Add(habilidade);
             Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}");
-            Console.Clear();
         }
 
         public void ExibirInfo()
