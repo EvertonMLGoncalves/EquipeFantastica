@@ -1,9 +1,4 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
@@ -22,13 +17,13 @@ namespace ProjetoRPG_Equipe4.Personagens
             Nome = nome;
             Forca = 1;
             XP = 0;
-            Status = "Saudável"; 
-          
+            Status = "Saudável";
+
         }
         public Arqueiro() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call
         {
-            
+
             base.ExibirInfo();
             Console.WriteLine($"# Destreza: {Destreza}\t\t\t#");
             Console.WriteLine("#################################");

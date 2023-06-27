@@ -1,10 +1,6 @@
 ﻿using ProjetoRPG_Equipe4.Enums;
 using ProjetoRPG_Equipe4.Personagens;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Artefatos
 {
@@ -21,9 +17,9 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public Habilidades(string nome, TipoHabilidade tipo, int utilizado, int danoHabilidade)
         {
             Nome = nome;
-            Tipo = tipo; 
+            Tipo = tipo;
             Utilizado = utilizado;
-            DanoHabilidade = danoHabilidade; 
+            DanoHabilidade = danoHabilidade;
         }
 
         public Habilidades CriarHabilidade()
@@ -48,7 +44,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public static void AdicionarHabilidade(Personagem personagem, Habilidades habilidade) // MVP de associar personagem com habilidade
         {
             personagem.ListaDeHabilidades.Add(habilidade);
-            Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}"); 
+            Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}");
             Console.Clear();
         }
 
@@ -63,14 +59,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
         }
 
 
-
-        /* public static int Envenenar(Personagem personagem) // implementado por Claudia / Editado por Everton
-         {
-             personagem.Status = "Envenenado";
-             personagem.TurnosAfetado = 5;
-             return personagem.PontosVida -= (int)(personagem.PontosVida * 0.10); //perde 10% da vida a cada turno 
-
-         }*/
         public static void Envenenar(Personagem inimigo)
         {
             inimigo.Status = "Envenenado";
@@ -84,24 +72,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
             inimigo.Defesa -= (int)(inimigo.Defesa * 0.3); // Reduz 30% da defesa
         }
 
-        /*public static int Atordoar(Personagem personagem) // Claudia + Everton
-        {
-            personagem.Status = "Atordoado";
-            int defesaInicial = personagem.Defesa;
-            personagem.TurnosAfetado = 3; // Everton
-            return personagem.Defesa -= (int)(personagem.Defesa * 0.3);
-
-        }*/
-
-
-        /*public static int Queimar(Personagem personagem) // Claudia + Everton
-        {
-            personagem.Status = "Queimado";
-            personagem.TurnosAfetado = 3;
-            return personagem.PontosVida -= (int)(personagem.PontosVida * 0.10*3);
-
-        }*/
-        // ARRUMAR DPS
         public static void Queimar(Personagem inimigo)
         {
             inimigo.Status = "Queimado";
@@ -110,12 +80,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
 
         }
 
-        /* public static void Adormecer(Personagem personagem) // Claudia + Everton
-         {
-             personagem.Status = "Adormecido";
-             personagem.TurnosAfetado = 1;
-         }*/
-
         public static void Adormecer(Personagem inimigo)
         {
             inimigo.Status = "Adormecido";
@@ -123,51 +87,26 @@ namespace ProjetoRPG_Equipe4.Artefatos
             inimigo.DanoPorTurno = 0; // Sem dano por turno
         }
 
-        /* public static void UsarHabilidade(Habilidades habilidade, Personagem inimigo) //~Everton
-         {
-             if (habilidade.Tipo == TipoHabilidade.Envenenante)
-             {
-                 Habilidades.Envenenar(inimigo);
-                 Console.WriteLine($"{inimigo.Nome} está envenenado por {inimigo.TurnosAfetado} turnos");
-             }
-             else if (habilidade.Tipo == TipoHabilidade.Atordoante)
-             {
-                 Habilidades.Atordoar(inimigo);
-                 Console.WriteLine($"{inimigo.Nome} está atordoado por {inimigo.TurnosAfetado} turnos");
-             }
-             else if (habilidade.Tipo == TipoHabilidade.Incendiante)
-             {
-                 Habilidades.Queimar(inimigo);
-                 Console.WriteLine($"{inimigo.Nome} está queimando por {inimigo.TurnosAfetado} turnos");
-             }
-             else
-             {
-                 Habilidades.Adormecer(inimigo);
-                 Console.WriteLine($"{inimigo.Nome} está sedado por {inimigo.TurnosAfetado} turnos");
-             }
-
-         }*/
-
         public static void UsarHabilidade(Habilidades habilidade, Personagem inimigo)
         {
             if (habilidade.Tipo == TipoHabilidade.Envenenante)
             {
-                Habilidades.Envenenar(inimigo);
+                Envenenar(inimigo);
                 Console.WriteLine($"{inimigo.Nome} está envenenado por {inimigo.TurnosAfetado} turnos");
             }
             else if (habilidade.Tipo == TipoHabilidade.Atordoante)
             {
-                Habilidades.Atordoar(inimigo);
+                Atordoar(inimigo);
                 Console.WriteLine($"{inimigo.Nome} está atordoado por {inimigo.TurnosAfetado} turno");
             }
             else if (habilidade.Tipo == TipoHabilidade.Incendiante)
             {
-                Habilidades.Queimar(inimigo);
+                Queimar(inimigo);
                 Console.WriteLine($"{inimigo.Nome} está queimando por {inimigo.TurnosAfetado} turnos");
             }
             else
             {
-                Habilidades.Adormecer(inimigo);
+                Adormecer(inimigo);
                 Console.WriteLine($"{inimigo.Nome} está sedado por {inimigo.TurnosAfetado} turno");
             }
         }

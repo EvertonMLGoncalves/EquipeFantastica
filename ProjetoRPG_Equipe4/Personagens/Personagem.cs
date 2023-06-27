@@ -1,12 +1,7 @@
 ﻿using ProjetoRPG_Equipe4.Artefatos;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Threading;
-=======
-using System.Security.Cryptography;
-
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
 namespace ProjetoRPG_Equipe4.Personagens
 {
     public class Personagem
@@ -46,7 +41,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         public Personagem(string nome, string sexo,
             int nivel, int forca, int defesa, int xP)
         {
-           // Id = id;
+            // Id = id;
             Nome = nome;
             Sexo = sexo;
             PontosVida = 100;
@@ -59,7 +54,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         }
 
         Random random = new Random();
-        public void Atacar(Personagem inimigo) //~~Helena tudo // ESSE OU O ATACAR PRECISA REFINAR!!
+        public void Atacar(Personagem inimigo) //~~Helena 1 implementação
         {
             int danoArma = 0;
             int dano = 0;
@@ -109,11 +104,8 @@ namespace ProjetoRPG_Equipe4.Personagens
                 Console.WriteLine("# 0 - Sair e Atacar");
                 foreach (Habilidades habilidadee in ListaDeHabilidades)
                 {
-<<<<<<< HEAD
                     Console.WriteLine($"# {index} - {habilidadee.Nome}");
-=======
                     Console.WriteLine($"{index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                     index++;
                 }
                 Console.WriteLine("#####################");
@@ -126,55 +118,36 @@ namespace ProjetoRPG_Equipe4.Personagens
                     Habilidades.UsarHabilidade(habilidade, inimigo);
                     danoHabilidade = habilidade.DanoHabilidade;
                     ListaDeHabilidades[i - 1].Utilizado--;
-                } 
+                }
                 Console.Clear(); //~Everton 26/06
             }
 
             int danoTotal = danoArma + dano + danoHabilidade;
-            Console.WriteLine($"{Nome} está atacando {inimigo.Nome} com tudo!!");
+            //Console.WriteLine($"{Nome} está atacando {inimigo.Nome} com tudo!!");//nnc aparece
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
-<<<<<<< HEAD
             Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");
             Thread.Sleep(2000);
             Console.Clear();
 
-            if (golpeCritico) { Console.WriteLine($"# {inimigo.Nome} recebeu um GOLPE CRÍTICO! Aumentando em 50% o seu dano :( #"); Thread.Sleep(2000); Console.Clear(); }// ~~Dani Alves com alteração de Helena na frase e sua localização
-=======
+            if (GolpeCritico()) { Console.WriteLine($"# {inimigo.Nome} recebeu um GOLPE CRÍTICO! Aumentando em 50% o seu dano :( #"); Thread.Sleep(2000); Console.Clear(); }// ~~Dani Alves com alteração de Helena na frase e sua localização
             if (inimigo.PontosVida >= 0)
             {
-                Console.WriteLine($"HP - {inimigo.PontosVida} \nDano Sofrido - {danoTotal}");
+                Console.WriteLine($"###########################################");
+                Console.WriteLine($"# Pontos de vida - {inimigo.PontosVida} | Dano Sofrido - {danoTotal} #");
+                Console.WriteLine($"###########################################");
+                Thread.Sleep(2000);
+                Console.Clear();
                 //Golpe crítico 
-                bool golpeCritico = false; //checar se houve golpe critico para a saida de dados
+
                 if (GolpeCritico())
                 {
                     Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico de {(int)(danoTotal * 0.5)}");
                     danoTotal = danoTotal + (int)(danoTotal * 0.5);
-                    golpeCritico = true;
                 } //50% mais de dano ~~Dani Alves
-            } 
+            }
             else Console.WriteLine($"{inimigo.Nome} morreu \nDano Sofrido: {danoTotal}");
-           /* //Ataque
-            
-            // ~~Dani Alves com alteração de Helena na frase e sua localização
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
-            //Caso morte ocorra
-            if (inimigo.PontosVida <= 0)
-            {
-                Console.WriteLine($"## Dano Recebido: {danoTotal} ##\n## {inimigo.Nome} morreu ##");
-                Thread.Sleep(2500); Console.Clear();
-            }
-            //Caso morte não ocorra
-<<<<<<< HEAD
-            else
-            {
-                Console.WriteLine($"## Dano Recebido: {danoTotal} ##\n## Vida de {inimigo.Nome}: {inimigo.PontosVida} ##");
-                Thread.Sleep(2500); Console.Clear();
-            }
-=======
-            else Console.WriteLine($"Dano Recebido: {danoTotal} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");*/
 
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
         }
 
         //<>
@@ -293,7 +266,7 @@ namespace ProjetoRPG_Equipe4.Personagens
 
         }
 
-        private bool GolpeCritico() // ~~Dani Alves c/ implementação de Helena
+        public bool GolpeCritico() // ~~Dani Alves c/ implementação de Helena
         {
             int chanceCritico = 10; //10%
 

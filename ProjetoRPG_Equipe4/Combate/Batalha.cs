@@ -7,8 +7,7 @@ namespace ProjetoRPG_Equipe4.Combate
     internal static class Batalha
     {
 
-
-        public static void IniciarBatalha(Personagem jogador, Personagem inimigo) // ESSE OU O ATACAR PRECISA REFINAR!!
+        public static void IniciarBatalha(Personagem jogador, Personagem inimigo)
         {
             bool flag = true;
             int vidaInicialJogador = jogador.PontosVida;
@@ -30,79 +29,17 @@ namespace ProjetoRPG_Equipe4.Combate
                 switch (op)
                 {
                     case 1:
-                        Console.WriteLine("Você está atacando!");
-                        Thread.Sleep(3000);
-                        Console.Clear();
-                        jogador.Atacar(inimigo);
-                        Console.WriteLine("#############################");
-                        Thread.Sleep(1000);
-                        if (inimigo.PontosVida <= 0)
-                        {
-<<<<<<< HEAD
-                            Console.WriteLine("■O■O■O■O■O■ VOCÊ VENCEU ■O■O■O■O■O■");
-                            XPganho += 10;// ~~Helena
-                            TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador, XPganho);
-                            Thread.Sleep(5000);
-=======
-                            Console.WriteLine("VOCÊ VENCEU!!!!!!!!");
-                            TerminarBatalha(inimigo, vidaInicialInimigo, jogador, vidaInicialJogador);
-                            Thread.Sleep(10000);
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
-                            Console.Clear();
-                            flag = false;
-                            break;
-                        }
-                        if (inimigo.TurnosAfetado != 0) //~~Everton
-                        {
-                            if (inimigo.VerificarStatus())
-                            {
-                                inimigo.VerificarDano();
-                                Console.WriteLine("Você está sendo atacado!");
-                                inimigo.Atacar(jogador);
-                            }  
-                            else
-                            {
-                                Console.WriteLine($"{inimigo.Nome} está dormindo e ficará {inimigo.TurnosAfetado} sem jogar...");
-                            }
-                        }
-                        else  //~~Everton
-                        {
-                            Console.WriteLine("Você está sendo atacado!");
-                            inimigo.Atacar(jogador);
-                        }
-                        if (jogador.PontosVida <= 0)
-                        {
-<<<<<<< HEAD
-                            Console.WriteLine("****************** GAME OVER! ******************");
-                            Console.Clear();
-                            TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
-=======
-                            Console.WriteLine("\n****************** \nGAME OVER!  " +
-                                "\n******************");
-                            Console.WriteLine("--------------------------");
-                            TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo);
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
-                            Console.Clear();
-                            Thread.Sleep(5000);
-                            flag = false;
-                            break;
-                        }
-                        
-                        Console.Clear();
+                        flag = ControlarTurno(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, flag);
                         break;
                     case 2:
-                        Console.WriteLine("Fugindo...");
-<<<<<<< HEAD
-                        TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo, XPganho);
-                        Thread.Sleep(5000);
-=======
+                        Console.WriteLine("# Fugindo... #");
                         TerminarBatalha(jogador, vidaInicialJogador, inimigo, vidaInicialInimigo);
                         Thread.Sleep(10000);
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
                         Console.Clear();
+                        flag = !flag;
                         break;
                     default:
-                        Console.WriteLine("Valor inválido");
+                        Console.WriteLine("Valor inválido"); flag = !flag;
                         break;
                 }
             }
@@ -114,7 +51,7 @@ namespace ProjetoRPG_Equipe4.Combate
 
             if (jogador.PontosVida <= 0)
             {
-                
+
                 Console.WriteLine("########## RESULTADO DAS BATALHA ##########");
                 Console.WriteLine($"# {jogador.Nome} morreu...\t\t\t  #");
                 Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida}  #");
@@ -125,7 +62,7 @@ namespace ProjetoRPG_Equipe4.Combate
             }
             else if (inimigo.PontosVida <= 0)
             {
-                Console.WriteLine("########## RESULTADO DAS BATALHA ##########");
+                Console.WriteLine("########### RESULTADO DAS BATALHA ###########");
                 Console.WriteLine($"# {inimigo.Nome} foi derrotado!\t    #");
                 Console.WriteLine($"# Vida atual de {jogador}: {jogador.PontosVida}\t\t    #");
                 Console.WriteLine($"# Dano causado por {inimigo.Nome}: {vidainicialjogador - jogador.PontosVida}  #");
@@ -144,7 +81,55 @@ namespace ProjetoRPG_Equipe4.Combate
 
         }
 
+        public static bool ControlarTurno(Personagem jogador, int vidainicialjogador, Personagem inimigo, int vidainicialinimigo, bool flag)
+        {
+            Console.WriteLine("Você está atacando!");
+            Thread.Sleep(3000);
+            Console.Clear();
+            jogador.Atacar(inimigo);
+            Console.WriteLine("#############################");
+            Thread.Sleep(1000);
+            if (inimigo.PontosVida <= 0)
+            {
+                Console.WriteLine("■O■O■O■O■O■ VOCÊ VENCEU ■O■O■O■O■O■");
+                TerminarBatalha(inimigo, vidainicialjogador, jogador, vidainicialinimigo);
+                Thread.Sleep(5000);
+                Console.Clear();
+                flag = false;
+            }
+            if (inimigo.TurnosAfetado != 0) //~~Everton
+            {
+                if (inimigo.VerificarStatus())
+                {
+                    inimigo.VerificarDano();
+                    Console.WriteLine($"{jogador.Nome} está sendo atacado!");
+                    inimigo.Atacar(jogador);
+                }
+                else
+                {
+                    Console.WriteLine($"{inimigo.Nome} está dormindo: {inimigo.TurnosAfetado} turno(s) restante(s)");
+                }
+            }
+            else  //~~Everton
+            {
+                Console.WriteLine("Você está sendo atacado!");
+                inimigo.Atacar(jogador);
+            }
+            if (jogador.PontosVida <= 0)
+            {
+                Console.WriteLine("****************** GAME OVER! ******************");
+                TerminarBatalha(jogador, vidainicialinimigo, inimigo, vidainicialinimigo);
+                Console.Clear();
+                Thread.Sleep(5000);
+                flag = false;
+            }
+            Console.Clear();
+            return flag;
         }
     }
+}
+
+
+
 
 

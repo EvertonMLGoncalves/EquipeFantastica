@@ -1,22 +1,16 @@
-﻿using Microsoft.SqlServer.Server;
-using ProjetoRPG_Equipe4.Artefatos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
     public class Guerreiro : Personagem
     {
         public int Furia { get; set; }
-        
-        
+
+
 
         public Guerreiro(int id, string nome, string sexo) : base(nome, sexo)
         {
-           // Id = id;
+            // Id = id;
             Nivel = 1;
             Furia = 1;
             Defesa = 30;

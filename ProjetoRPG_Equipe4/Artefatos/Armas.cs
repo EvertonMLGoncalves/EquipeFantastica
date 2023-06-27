@@ -14,7 +14,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public int DanoArma { get; set; }
 
         public int PersonagemApropriado { get; set; }
-       
+
 
         public int Raridade { get; set; }
         public string HabilidadeArma { get; set; }
@@ -34,16 +34,16 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Nome = nome;
             DanoArma = danoArma;
             PersonagemApropriado = personagemApropriado;
-            
+
             Raridade = raridade;
             HabilidadeArma = habilidadeArma;
         }
 
         public static void AdicionarArma(Personagem personagem, Arma arma) // ~Helena // Everton: Mudei o nome para "AdicionarArmas"
         {
-            if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2); 
+            if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2);
             personagem.ListaArmas.Add(arma);
-            Console.WriteLine($"# {arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso! #"); 
+            Console.WriteLine($"# {arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso! #");
             /*Console.ReadKey(); //Everton
             Console.Clear();*/ //Everton
         }
@@ -73,7 +73,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
         {
             Console.WriteLine("#### EXIBIR INFORMAÇÕES DA ARMA ####");
             Console.WriteLine($"# ID: {Id}\t\t\t\t   #");
-            Console.WriteLine($"# Nome: {Nome}\t\t#");
+            Console.WriteLine($"# Nome: {Nome}\t    #");
 
             if (PersonagemApropriado == 1) apropriado = "Guerreiro";
             else if (PersonagemApropriado == 2) apropriado = "Arqueiro";
@@ -84,7 +84,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Console.WriteLine($"# Raridade: {Raridade}\t\t\t   #");
             Console.WriteLine("####################################");
         }
-       
+
         public static void VerificarHabilidadeItem(Arma arma, Personagem personagem)
         {
             Random random = new Random();

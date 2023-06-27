@@ -1,12 +1,10 @@
-﻿using System;
-using ProjetoRPG_Equipe4.Personagens;
-using System.Threading;
-using System.ComponentModel.Design;
-using System.Media;
-using ProjetoRPG_Equipe4.Artefatos;
-using System.Collections.Concurrent;
+﻿using ProjetoRPG_Equipe4.Artefatos;
 using ProjetoRPG_Equipe4.Combate;
 using ProjetoRPG_Equipe4.Enums;
+using ProjetoRPG_Equipe4.Personagens;
+using System;
+//using System.Media;
+using System.Threading;
 
 public class Jogo
 {
@@ -15,32 +13,32 @@ public class Jogo
         Guerreiro guerreiro = new Guerreiro();
         Arqueiro arqueiro = new Arqueiro();
         Mago mago = new Mago();
-        Arma arma1 = new Arma(1, "Espada Fantástica",80,1,3,"Cortar com muita ferozidade");
+        Arma arma1 = new Arma(1, "Espada Fantástica", 80, 1, 3, "Cortar com muita ferozidade");
         Inimigo inimigo1 = new Inimigo("Guarda do Castelo", "Homem", 3, 5, 5, 10, EnumTipoInimigo.GuardaDoCastelo, EnumHabilidadeInimigo.Atordoar);
-        Habilidades habilidade1 = new Habilidades("Super Veneno",ProjetoRPG_Equipe4.Enums.TipoHabilidade.Envenenante,2,30);
-        Menu(guerreiro, arqueiro, mago,arma1, inimigo1, habilidade1);
+        Habilidades habilidade1 = new Habilidades("Super Veneno", ProjetoRPG_Equipe4.Enums.TipoHabilidade.Envenenante, 2, 30);
+        Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1);
         Console.ReadKey();
-       
+
 
     }
 
-    public static  void Menu(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago,Arma arma1,Inimigo inimigo1, Habilidades habilidade1)
+    public static void Menu(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago, Arma arma1, Inimigo inimigo1, Habilidades habilidade1)
     {
         Personagem jogador = ComecoJogo(guerreiro, arqueiro, mago);
         Console.WriteLine("\tcarregando...");
         Console.Clear();
         Thread.Sleep(700);
-        primeiroTurno(jogador,arma1, inimigo1,habilidade1);
+        primeiroTurno(jogador, arma1, inimigo1, habilidade1);
         Console.Beep();
-       
+
     }
 
     public static Personagem ComecoJogo(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago)
     {
-        string filePath = "Lalala.wav";
-        SoundPlayer player = new SoundPlayer(filePath);
+        /*SoundPlayer player = new SoundPlayer();
+        player.SoundLocation = "https://www.youtube.com/watch?v=Jv1j1GzGO2w";
         player.Load();
-        player.PlayLooping();
+        player.PlayLooping();*/
         Console.WriteLine("### INICIANDO JOGO ###");
         Console.WriteLine("\tcarregando...");
         Thread.Sleep(1200);
@@ -69,86 +67,11 @@ public class Jogo
 
         switch (escolha)
         {
-<<<<<<< HEAD
-            case 1:jogador = guerreiro.CriarPersonagem(); break;
+
+            case 1: jogador = guerreiro.CriarPersonagem(); break;
             case 2: jogador = arqueiro.CriarPersonagem(); break;
             case 3: jogador = mago.CriarPersonagem(); break;
-            default: Console.WriteLine("Tente novamente! Escolha errada!"); player.Stop(); return null;
-=======
-            /*Guerreiro g1 = (Guerreiro)new Guerreiro().CriarPersonagem();
-            Inimigo n1 = (Inimigo)new Inimigo().CriarPersonagem();
-            *//* 
-             Guerreiro g1 = new Guerreiro(1, "Joao", "Macho"); 
-             Inimigo n1 = new Inimigo(1, 10, "Guarda Maligno", "Macho", Enums.EnumTipoInimigo.GuardaDoCastelo, Enums.EnumHabilidadeInimigo.Atordoar);*//*
-
-            Arma arma1 = new Arma().CriarArma();
-            Arma arma2 = new Arma().CriarArma();
-            Arma.AdicionarArma(g1, arma1);
-            Arma.AdicionarArma(n1 , arma2);
-            Arma.AdicionarArma(g1, arma2);  
-            
-            Habilidades h1 = new Habilidades().CriarHabilidade(); 
-            Habilidades h2 = new Habilidades().CriarHabilidade(); 
-             
-            Habilidades.AdicionarHabilidade(g1 , h1);
-            Habilidades.AdicionarHabilidade(g1, h2);*/
-
-
-
-            // Habilidades habilidade1 = new Habilidades().criarHabilidade();
-            //Habilidades habilidade2 = new Habilidades().criarHabilidade();
-
-            //Habilidades.dropHabilidade(g1, habilidade1);
-            //Habilidades.dropHabilidade(g1 , habilidade2);
-            // /*foreach(Arma arma in g1.ListaArmas) Console.WriteLine(arma.Nome);*/
-
-            /* Guerreiro guerreiro1 = (Guerreiro)new Guerreiro().CriarPersonagem();
-             Guerreiro guerreiro2 = (Guerreiro)new Guerreiro().CriarPersonagem();
-             Guerreiro guerreiro3 = (Guerreiro)new Guerreiro().CriarPersonagem();
-             Guerreiro guerreiro4 = (Guerreiro)new Guerreiro().CriarPersonagem();*/
-
-
-
-            /*arma1.ExibirInfo();
-          */
-
-
-            /*guerreiro1.ExibirInfo();
-
-           guerreiro1.AtualizarDados();*/
-
-
-            Guerreiro g1 = new Guerreiro(1, "Joao", "m");
-            Inimigo n1 = new Inimigo(0, 400, "Cavaleiro do mal", "M");  
-             
-            Arma arma1 = new Arma(1, "Espada", 60, 1, "Espadas", 1, "");
-            Arma arma2 = new Arma(1, "Espada Longa", 90, 1, "Espadas", 1, "");
-            Arma.VerificarHabilidadeItem(arma1, g1);
-            Arma.VerificarHabilidadeItem(arma2, g1);
-            Arma.AdicionarArma(g1, arma1);
-            Arma.AdicionarArma(n1, arma2);
-            Arma.AdicionarArma(g1, arma2);
-
-            /*foreach (var arma in g1.ListaArmas)
-            {
-                Console.WriteLine(arma.Nome);
-            }*/
-
-            /*Habilidades h1 = new Habilidades("Bola de fogo", Enums.TipoHabilidade.Incendiante, 1, 30);
-            Habilidades.AdicionarHabilidade(g1, h1);*/
-
-            Batalha.IniciarBatalha(g1, n1);
-
-
-
-
-
-
-
-
-            Console.ReadKey();
->>>>>>> 6ac411c8adcffe9c2c59633006ec5a0007ef1788
-
+            default: Console.WriteLine("Tente novamente! Escolha errada!"); return null;//player.Stop(); return null;
         }
         Thread.Sleep(1200);
         bool flag = true;
@@ -160,17 +83,17 @@ public class Jogo
             if (val == 'A') flag = false;
         }
         Thread.Sleep(500);
-        player.Stop(); 
+        //player.Stop();
         return jogador;
     }
 
-   public static void primeiroTurno(Personagem jogador, Arma arma, Inimigo inimigo, Habilidades habilidade)
+    public static void primeiroTurno(Personagem jogador, Arma arma, Inimigo inimigo, Habilidades habilidade)
     {
-        
-        SoundPlayer MusicaTensa = new SoundPlayer("Blablabla.wav");
+
+        /*SoundPlayer MusicaTensa = new SoundPlayer("Blablabla.wav");
         SoundPlayer Yoshi = new SoundPlayer("Yoshi.wav");
         MusicaTensa.Load();
-        MusicaTensa.PlayLooping();
+        MusicaTensa.PlayLooping();*/
         Console.WriteLine("\tAh não, a frente do castelo você ja avista o Guarda do Castelo!");
         Console.WriteLine($"\tQue bom que sua irmã Lelezinha lhe enviou um(a) {arma.Nome}...");
         Thread.Sleep(1555);
@@ -187,18 +110,20 @@ public class Jogo
             if (val == 'A') flag = false;
         }
         Console.Clear();
-        Console.WriteLine($"Eita! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
+        Console.WriteLine($"\tEita! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
         Thread.Sleep(2400);
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
-        Console.WriteLine("Ufa! A batalha acabou! Foi por pouco...");
-        MusicaTensa.Stop();
+        Console.WriteLine("\tUfa! A batalha acabou! Foi por pouco...");
+        Thread.Sleep(2550);
+        //MusicaTensa.Stop();
         Console.Clear();
-        Yoshi.Load();
-        Yoshi.PlayLooping();
+       /* Yoshi.Load();
+        Yoshi.PlayLooping();*/
         Console.WriteLine($"\tOpa! O que é isso aqui? eu acho que é uma {habilidade.Nome}!");
         Habilidades.AdicionarHabilidade(jogador, habilidade);
-        Thread.Sleep(3000);
+        Thread.Sleep(10000);
+        Console.Clear();
         flag = true;
         while (flag)
         {
@@ -207,7 +132,7 @@ public class Jogo
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
             if (val == 'A') flag = false;
         }
-        Yoshi.Stop();
+       // Yoshi.Stop();
     }
 
 }
