@@ -7,24 +7,23 @@ using System.Threading.Tasks;
 using ProjetoRPG_Equipe4.Enums;
 namespace ProjetoRPG_Equipe4.Personagens
 {
-    internal class Inimigo : Personagem
+    public class Inimigo : Personagem
     {
         /* public int Dificuldade { get; set; } */// equivalente ao nível do inimigo (nao existe mais ) //~~Everton c/ Helena na call
         /*public int Recompensa { get; set; }*/ // o quanto que desconta do XP dos bonzinhos (nao existe mais ) //~~Everton c/ Helena na call
 
         public EnumTipoInimigo Tipo { get; set; }
         public EnumHabilidadeInimigo Habilidade { get; set; }
-        public Inimigo(int dificuldade, int recompensa, string nome, string sexo, EnumTipoInimigo tipo, EnumHabilidadeInimigo habilidade) : base(nome, sexo)
+        public Inimigo(string nome, string sexo,  int dificuldade, int forca, int defesa, int recompensa, EnumTipoInimigo tipo, EnumHabilidadeInimigo habilidade) :
+            base(nome,sexo,dificuldade,forca,defesa,recompensa)
         {
             Nivel = dificuldade; //~~Everton c/ Helena na call
             XP = recompensa; //~~Everton c/ Helena na call
-            Defesa = 1;
-            PontosVida = 1700;
+            Defesa = defesa;
             Sexo = sexo;
             Nome = nome;
-            Forca = 70;
+            Forca = forca;
             XP = 0;
-            Status = "Saudável";
             Tipo = tipo;
             Habilidade = habilidade;
         }

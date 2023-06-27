@@ -49,7 +49,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
         {
             personagem.ListaDeHabilidades.Add(habilidade);
             Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}"); 
-            Console.ReadLine();
             Console.Clear();
         }
 
@@ -60,7 +59,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Console.WriteLine($"Tipo: {Tipo}");
             Console.WriteLine($"Dano da habilidade: {DanoHabilidade}");
             Console.WriteLine("############################");
-            Console.WriteLine("");
+
         }
 
 

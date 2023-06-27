@@ -1,12 +1,12 @@
 ﻿using ProjetoRPG_Equipe4.Artefatos;
 using System;
 using System.Collections.Generic;
-
+using System.Threading;
 namespace ProjetoRPG_Equipe4.Personagens
 {
     public class Personagem
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Nome { get; set; } // editavel          
         public string Sexo { get; set; } // editavel
         public int PontosVida { get; set; } // nasce: 100 | Morre com: 0 
@@ -38,21 +38,19 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável";
         }
         // construtor para testes
-        public Personagem(int id, string nome, string sexo, int pontosVida,
-            int nivel, int forca, int defesa, string status, int xP,
-            int codigo, int turnosafetado)
+        public Personagem(string nome, string sexo,
+            int nivel, int forca, int defesa, int xP)
         {
-            Id = id;
+           // Id = id;
             Nome = nome;
             Sexo = sexo;
-            PontosVida = pontosVida;
+            PontosVida = 100;
             Nivel = nivel;
             Forca = forca;
             Defesa = defesa;
-            Status = status;
+            Status = "Saudável";
             XP = xP;
-            CODIGO = codigo;
-            TurnosAfetado = turnosafetado;
+            CODIGO = 4;
         }
 
         Random random = new Random();
@@ -68,15 +66,19 @@ namespace ProjetoRPG_Equipe4.Personagens
             {
                 if (CODIGO == 1 || CODIGO == 2 || CODIGO == 3)
                 { //Checando se nn é um inimigo 
-                    Console.Clear(); //Everton
+                    //Console.Clear(); //Everton
+                    Console.WriteLine("### ARMAS ###");
                     foreach (Arma arma in ListaArmas)
                     {
-                        Console.WriteLine($"{index} - {arma.Nome}");
+                        Console.WriteLine($"# {index} - {arma.Nome}");
                         index++;
                     }
+                    Console.WriteLine("#######################");
                     index = 1;
                     Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
-                    i = int.Parse(Console.ReadLine());
+                    Console.Write("# "); i = int.Parse(Console.ReadLine());
+                    Thread.Sleep(1000);
+                    Console.Clear();
                     Arma armaEscolhida = ListaArmas[i - 1];
                     danoArma = armaEscolhida.DanoArma;
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
@@ -98,13 +100,17 @@ namespace ProjetoRPG_Equipe4.Personagens
             //Perguntando se o personagem vai querer usar uma habilidade e vendo se ele tem alguma:
             if (ListaDeHabilidades.Count > 0)
             {
-                Console.WriteLine("Escolha uma habilidade: \n0 - para sair e atacar");
+                Console.WriteLine("### HABILIDADES ###");
+                Console.WriteLine("# 0 - Sair e Atacar");
                 foreach (Habilidades habilidadee in ListaDeHabilidades)
                 {
-                    Console.WriteLine($"{index} - {habilidadee.Nome}");
+                    Console.WriteLine($"# {index} - {habilidadee.Nome}");
                     index++;
                 }
-                i = int.Parse(Console.ReadLine());
+                Console.WriteLine("#####################");
+                Console.Write("# "); i = int.Parse(Console.ReadLine());
+                Thread.Sleep(1000);
+                Console.Clear();
                 if (i > 0)
                 {
                     Habilidades habilidade = ListaDeHabilidades[i - 1];
@@ -126,51 +132,54 @@ namespace ProjetoRPG_Equipe4.Personagens
             //Ataque
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
-            Console.WriteLine($"{inimigo.Nome} está sendo atacado!");
+            Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");
+            Thread.Sleep(2000);
+            Console.Clear();
 
-
-            if (golpeCritico) Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico! Aumentando em 50% o seu dano :("); // ~~Dani Alves com alteração de Helena na frase e sua localização
+            if (golpeCritico) { Console.WriteLine($"# {inimigo.Nome} recebeu um GOLPE CRÍTICO! Aumentando em 50% o seu dano :( #"); Thread.Sleep(2000); Console.Clear(); }// ~~Dani Alves com alteração de Helena na frase e sua localização
             //Caso morte ocorra
-            if (inimigo.PontosVida <= 0) Console.WriteLine($"Dano Recebido: {danoTotal} \n{inimigo.Nome} morreu");
+            if (inimigo.PontosVida <= 0)
+            {
+                Console.WriteLine($"## Dano Recebido: {danoTotal} ##\n## {inimigo.Nome} morreu ##");
+                Thread.Sleep(2500); Console.Clear();
+            }
             //Caso morte não ocorra
-            else Console.WriteLine($"Dano Recebido: {danoTotal} \nVida de {inimigo.Nome}: {inimigo.PontosVida}");
-
+            else
+            {
+                Console.WriteLine($"## Dano Recebido: {danoTotal} ##\n## Vida de {inimigo.Nome}: {inimigo.PontosVida} ##");
+                Thread.Sleep(2500); Console.Clear();
+            }
         }
 
         //<>
         public virtual void ExibirInfo() //~~Everton c/ Helena na call
         {
-            Console.WriteLine($"Id: {Id}");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Sexo: {Sexo}");
-            Console.WriteLine($"PontosVida: {PontosVida}");
-            Console.WriteLine($"Nivel: {Nivel}");
-            Console.WriteLine($"Forca: {Forca}");
-            Console.WriteLine($"Defesa: {Defesa}");
-            Console.WriteLine($"Status: {Status}");
-            Console.WriteLine($"XP: {XP}");
+            Console.WriteLine("### INFORMAÇÕES DO PERSONAGEM ###");
+            //Console.WriteLine($"# Id: {Id}\t\t\t\t#");
+            Console.WriteLine($"# Nome: {Nome}\t\t\t#");
+            Console.WriteLine($"# Sexo: {Sexo}\t\t\t#");
+            Console.WriteLine($"# Pontos de Vida: {PontosVida} \t\t#");
+            Console.WriteLine($"# Forca: {Forca} \t\t\t#");
+            Console.WriteLine($"# Defesa: {Defesa} \t\t\t#");
+            Console.WriteLine($"# Status: {Status} \t\t#");
+            Console.WriteLine($"# XP: {XP} \t\t\t#");
 
         }
         public virtual Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
-            Console.WriteLine("Digite o Id do Persongem:");
-            Id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Nome do Persongem:");
+            Console.WriteLine("### CRIANDO O PERSONAGEM ###");
+            //Id = int.Parse(Console.ReadLine());
+            Console.Write("Nome: ");
             Nome = Console.ReadLine();
-            Console.WriteLine("Digite o Sexo do Persongem:");
+            Console.Write("Sexo: ");
             Sexo = Console.ReadLine();
-            Console.WriteLine("Digite os de PontosVida do Persongem:");
-            PontosVida = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Nivel do Persongem:");
-            Nivel = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite a Forca do Persongem:");
-            Forca = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite a Defesa do Persongem:");
-            Defesa = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o Status do Persongem:");
-            Status = Console.ReadLine();
-            Console.WriteLine("Digite o XP do Persongem:");
-            XP = int.Parse(Console.ReadLine());
+            Console.WriteLine("###############################");
+            PontosVida = 100;
+            Nivel = 1;
+            Forca = 5;
+            Defesa = 5;
+            Status = "Saudável";
+            XP = 0;
             ListaArmas = new List<Arma>(); ListaDeHabilidades = new List<Habilidades>();
             Console.Clear(); //Everton
             return this;

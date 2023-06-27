@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
-    internal class Arqueiro : Personagem
+    public class Arqueiro : Personagem
     {
         public int Destreza { get; set; }
         //public const int CODIGO = 2; //~~Helena
         public Arqueiro(int id, string nome, string sexo) : base(nome, sexo)
         {
-            Id = id;
+            //Id = id;
             Nivel = 1;
             Destreza = 1;
             Defesa = 1;
@@ -25,15 +25,17 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável"; 
           
         }
+        public Arqueiro() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call
         {
-            Console.WriteLine($"Destreza: {Destreza}");
+            
             base.ExibirInfo();
+            Console.WriteLine($"# Destreza: {Destreza}\t\t\t#");
+            Console.WriteLine("#################################");
         }
         public override Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
-            Console.WriteLine("Digite a Destreza do Personagem:");
-            Destreza = int.Parse(Console.ReadLine());
+            Destreza = 5;
             base.CriarPersonagem();
             CODIGO = 2; //~~Helena
             return this;

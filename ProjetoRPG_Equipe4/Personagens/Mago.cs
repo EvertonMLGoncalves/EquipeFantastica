@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProjetoRPG_Equipe4.Personagens
 {
-    internal class Mago : Personagem
+    public class Mago : Personagem
     {
         public int PontosMagia { get; set; }
         // public const int CODIGO = 3; //~~Helena
 
         public Mago(int id, string nome, string sexo) : base(nome, sexo)
         {
-            Id = id;
+            //Id = id;
             Nivel = 1;
             PontosMagia = 1;
             Defesa = 1;
@@ -26,15 +26,18 @@ namespace ProjetoRPG_Equipe4.Personagens
             Status = "Saudável";
             
         }
+        public Mago() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call
         {
-            Console.WriteLine($"PontosMagia: {PontosMagia}");
+            
             base.ExibirInfo();
+            Console.WriteLine($"# PontosMagia: {PontosMagia}\t\t#");
+            Console.WriteLine("#################################");
         }
         public override Personagem CriarPersonagem() //~~Everton c/ Helena na call
         {
-            Console.WriteLine("Digite a PontosMagia do Personagem:");
-            PontosMagia = int.Parse(Console.ReadLine());
+
+            PontosMagia = 5;
             CODIGO = 3; //~~Helena
             base.CriarPersonagem();
             return this;

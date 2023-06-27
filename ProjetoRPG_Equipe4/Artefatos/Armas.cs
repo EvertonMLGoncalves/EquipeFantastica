@@ -14,27 +14,27 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public int DanoArma { get; set; }
 
         public int PersonagemApropriado { get; set; }
-        public string Categoria { get; set; }
+       
 
         public int Raridade { get; set; }
         public string HabilidadeArma { get; set; }
 
         public Arma() { }
-        public Arma(int id, string nome, int danoBase)
+        /*public Arma(int id, string nome, int danoBase)
         {
             Id = id;
             Nome = nome;
             DanoArma = danoBase;
 
-        }
+        }*/
         //construtor completo para testes
-        public Arma(int id, string nome, int danoArma, int personagemApropriado, string categoria, int raridade, string habilidadeArma)
+        public Arma(int id, string nome, int danoArma, int personagemApropriado, int raridade, string habilidadeArma)
         {
             Id = id;
             Nome = nome;
             DanoArma = danoArma;
             PersonagemApropriado = personagemApropriado;
-            Categoria = categoria;
+            
             Raridade = raridade;
             HabilidadeArma = habilidadeArma;
         }
@@ -43,21 +43,19 @@ namespace ProjetoRPG_Equipe4.Artefatos
         {
             if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2); 
             personagem.ListaArmas.Add(arma);
-            Console.WriteLine($"{arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso!"); 
-            Console.ReadKey(); //Everton
-            Console.Clear(); //Everton
+            Console.WriteLine($"# {arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso! #"); 
+            /*Console.ReadKey(); //Everton
+            Console.Clear();*/ //Everton
         }
 
 
-        public Arma CriarArma() //~~Helena
+        public Arma CriarArma() //~~Helena // metodo nn utilizado, logo não formatado
         {
             Console.WriteLine("### CRIANDO ARMA ###");
             Console.Write($"ID: ");
             Id = int.Parse(Console.ReadLine());
             Console.Write($"Nome: ");
             Nome = Console.ReadLine();
-            Console.Write($"Categoria: ");
-            Categoria = Console.ReadLine();
             Console.Write("Personagem apropiado (1 - Guerreiro | 2 - Arqueiro | 3 - Mago): ");
             PersonagemApropriado = int.Parse(Console.ReadLine());
             Console.Write("Dano da arma: ");
@@ -73,20 +71,18 @@ namespace ProjetoRPG_Equipe4.Artefatos
         string apropriado = null;//~~Helena
         public void ExibirInfo() //~~Helena
         {
-            Console.WriteLine("### EXIBIR INFORMAÇÕES DA ARMA ###");
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Categoria: {Categoria}");
+            Console.WriteLine("#### EXIBIR INFORMAÇÕES DA ARMA ####");
+            Console.WriteLine($"# ID: {Id}\t\t\t\t   #");
+            Console.WriteLine($"# Nome: {Nome}\t\t#");
 
             if (PersonagemApropriado == 1) apropriado = "Guerreiro";
             else if (PersonagemApropriado == 2) apropriado = "Arqueiro";
             else apropriado = "Mago";
 
-            Console.WriteLine($"Personagem apropriado: {apropriado}");
-            Console.WriteLine($"Dano da arma: {DanoArma}");
-            Console.WriteLine($"Raridade: {Raridade}");
-            Console.WriteLine("###########################");
-            Console.WriteLine();
+            Console.WriteLine($"# Personagem apropriado: {apropriado} #");
+            Console.WriteLine($"# Dano da arma: {DanoArma}\t\t   #");
+            Console.WriteLine($"# Raridade: {Raridade}\t\t\t   #");
+            Console.WriteLine("####################################");
         }
     }
 }
