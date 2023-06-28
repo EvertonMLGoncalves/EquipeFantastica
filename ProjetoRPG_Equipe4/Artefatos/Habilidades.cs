@@ -120,7 +120,8 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 Console.WriteLine("# 0 - Sair e Atacar");
                 foreach (Habilidades habilidadee in personagem.ListaDeHabilidades)
                 {
-                    Console.WriteLine($"# {index} - {habilidadee.Nome}");
+                    /*Console.WriteLine($"# {index} - {habilidadee.Nome}");*/
+                    Console.WriteLine($"# {index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
                     index++;
                 }
                 Console.WriteLine("#####################");
