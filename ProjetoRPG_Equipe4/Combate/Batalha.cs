@@ -97,14 +97,14 @@ namespace ProjetoRPG_Equipe4.Combate
                 TerminarBatalha(inimigo, vidainicialjogador, jogador, vidainicialinimigo);
                 Thread.Sleep(5000);
                 Console.Clear();
-                flag = false;
+                return false;
             }
             if (inimigo.TurnosAfetado != 0) //~~Everton
             {
                 if (inimigo.VerificarStatus())
                 {
                     inimigo.VerificarDano();
-                    Console.WriteLine($"{jogador.Nome} está sendo atacado!");
+                    /*Console.WriteLine($"{jogador.Nome} está sendo atacado!");*/
                     inimigo.Atacar(jogador);
                 }
                 else
@@ -114,7 +114,7 @@ namespace ProjetoRPG_Equipe4.Combate
             }
             else  //~~Everton
             {
-                Console.WriteLine($"{jogador.Nome} está sendo atacado");
+                /*Console.WriteLine($"{jogador.Nome} está sendo atacado");*/
                 inimigo.Atacar(jogador);
             }
             if (jogador.PontosVida <= 0)
@@ -123,7 +123,7 @@ namespace ProjetoRPG_Equipe4.Combate
                 TerminarBatalha(jogador, vidainicialinimigo, inimigo, vidainicialinimigo);
                 Console.Clear();
                 Thread.Sleep(5000);
-                flag = false;
+                return false;
             }
             /*Console.Clear();*/
             return flag;

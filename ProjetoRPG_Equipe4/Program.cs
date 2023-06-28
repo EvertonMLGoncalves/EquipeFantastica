@@ -114,7 +114,7 @@ public class Jogo
         while (flag)
         {
             jogador.ExibirInfo();
-            Console.WriteLine("* Digite 'A' para prosseguir");
+            Console.WriteLine("* Digite 'X' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
             if (val == 'X') flag = false;
         }
@@ -141,7 +141,7 @@ public class Jogo
         while (flag)
         {
             arma.ExibirInfo();
-            Console.WriteLine("* Digite 'A' para prosseguir");
+            Console.WriteLine("* Digite 'X' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
             if (val == 'X') flag = false;
         }
@@ -164,7 +164,7 @@ public class Jogo
         while (flag)
         {
             habilidade.ExibirInfo();
-            Console.WriteLine("* Digite 'A' para prosseguir");
+            Console.WriteLine("* Digite 'X' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
             if (val == 'X') flag = false;
         }
