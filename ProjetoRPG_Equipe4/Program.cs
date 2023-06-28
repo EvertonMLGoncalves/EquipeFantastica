@@ -34,25 +34,35 @@ public class Jogo
 
         // Fase 5
         Inimigo inimigo5 = new Inimigo("Minotauro", "Homem", 12, 50, 40, 60, EnumTipoInimigo.Minotauro, EnumHabilidadeInimigo.Coice);
-        Habilidades habilidade5 = new Habilidades("Incendiar Tudo", TipoHabilidade.Incendiante, 1, 80);
+        Arma arma5 = new Arma(4, "Espada da sorte", 50, 1, 3, "Mata bem");
 
         // Fase 6
         Inimigo inimigo6 = new Inimigo("Ogro da Torre", "Homem", 15, 60, 50, 70, EnumTipoInimigo.OgroDaTorre, EnumHabilidadeInimigo.GritoSupersonico);
         Habilidades habilidade6 = new Habilidades("Boa noite Cinderella", TipoHabilidade.Sedante, 1, 90);
 
-        Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1);
+        // Fase 7
+        Inimigo inimigo7 = new Inimigo("Rei das Trevas", "Homem", 20, 80, 70, 90, EnumTipoInimigo.ReiDasTrevas, EnumHabilidadeInimigo.Adormecer);
+
+        Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1,arma2,inimigo2,habilidade3,inimigo3,inimigo4,arma4,inimigo5,arma5,inimigo6,habilidade6,inimigo7);
         Console.ReadKey();
 
 
     }
 
-    public static void Menu(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago, Arma arma1, Inimigo inimigo1, Habilidades habilidade1)
+    public static void Menu(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago, Arma arma1, Inimigo inimigo1, Habilidades habilidade1,
+        Arma arma2,Inimigo inimigo2, Habilidades habilidade3, Inimigo inimigo3, Inimigo inimigo4, Arma arma4,Inimigo inimigo5, Arma arma5, Inimigo inimigo6, Habilidades habilidade6, Inimigo inimigo7)
     {
         Personagem jogador = ComecoJogo(guerreiro, arqueiro, mago);
         Console.WriteLine("\tcarregando...");
         Console.Clear();
         Thread.Sleep(700);
         primeiroTurno(jogador, arma1, inimigo1, habilidade1);
+        segundoTurno(jogador, arma2, inimigo2);
+        TerceiroTurno(jogador, inimigo3, habilidade3);
+        QuartoTurno(jogador, inimigo4, arma4);
+        QuintoTurno(jogador, arma5, inimigo5);
+        SextoTurno(jogador, inimigo6, habilidade6);
+        SetimoTurno(jogador, inimigo6);
         Console.Beep();
 
     }
@@ -110,7 +120,8 @@ public class Jogo
         //player.Stop();
         return jogador;
     }
-
+    //problema 1: o cara sempre ganha
+    //problema 2: vida
     public static void primeiroTurno(Personagem jogador, Arma arma, Inimigo inimigo, Habilidades habilidade)
     {
         /*SoundPlayer MusicaTensa = new SoundPlayer("Blablabla.wav");
@@ -313,7 +324,7 @@ public class Jogo
 
     }
 
-    public static void SextoTurno(Personagem jogador, Inimigo inimigo, Arma arma, Habilidades habilidade)
+    public static void SextoTurno(Personagem jogador, Inimigo inimigo, Habilidades habilidade)
     {
         Console.WriteLine("\tQue esculturas bonitas!");
         Thread.Sleep(2000);

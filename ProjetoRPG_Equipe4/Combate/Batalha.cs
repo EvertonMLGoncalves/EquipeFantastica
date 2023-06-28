@@ -10,6 +10,7 @@ namespace ProjetoRPG_Equipe4.Combate
         public static void IniciarBatalha(Personagem jogador, Personagem inimigo)
         {
             bool flag = true;
+            
             int vidaInicialJogador = jogador.PontosVida;
             int vidaInicialInimigo = inimigo.PontosVida;
             while (flag)
