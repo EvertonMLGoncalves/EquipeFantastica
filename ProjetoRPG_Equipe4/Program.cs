@@ -14,22 +14,30 @@ public class Jogo
         Arqueiro arqueiro = new Arqueiro();
         Mago mago = new Mago();
 
-        // Turno 1
-        Arma arma1 = new Arma(1, "Espada Fantástica", 80, 1, 10, "Cortar com muita ferozidade");
+        // Fase 1
+        Arma arma1 = new Arma(1, "Espada Fantástica", 80, 1, 4, "Cortar com muita ferozidade");
         Inimigo inimigo1 = new Inimigo("Guarda do Castelo", "Homem", 3, 5, 5, 15, EnumTipoInimigo.GuardaDoCastelo, EnumHabilidadeInimigo.Atordoar);
         Habilidades habilidade1 = new Habilidades("Super Veneno", ProjetoRPG_Equipe4.Enums.TipoHabilidade.Envenenante, 2, 35);
 
-        // Turno 2
-        Arma arma2 = new Arma(2, "Flecha Perfeita", 60, 2, 5, "Acerta bem no coração");
+        // Fase 2
+        Arma arma2 = new Arma(2, "Flecha Perfeita", 60, 2, 2, "Acerta bem no coração");
         Inimigo inimigo2 = new Inimigo("Crocodilo do Fosso", "Macho", 5, 15, 15, 25, EnumTipoInimigo.CrocodiloDoFosso, EnumHabilidadeInimigo.GiroMortal);
 
-        // Turno 3
-        Habilidades habilidade3 = new Habilidades("Superdoado", TipoHabilidade.Atordoante, 1, 90);
+        // Fase 3
+        Habilidades habilidade3 = new Habilidades("Superdoado", TipoHabilidade.Atordoante, 1, 50);
         Inimigo inimigo3 = new Inimigo("Gragula da torre", "Femea", 7, 25, 20, 30, EnumTipoInimigo.GargulaDaTorre, EnumHabilidadeInimigo.Incendiar);
 
-        // Turno 4
+        // Fase 4
         Inimigo inimigo4 = new Inimigo("Esqueleto Malígno", "Homem", 9, 35, 30, 40, EnumTipoInimigo.EsqueletoMaligno, EnumHabilidadeInimigo.Regeneracao);
         Arma arma4 = new Arma(3, "Bola de fogo suprema", 50, 3, 3, "Bolada na cara!");
+
+        // Fase 5
+        Inimigo inimigo5 = new Inimigo("Minotauro", "Homem", 12, 50, 40, 60, EnumTipoInimigo.Minotauro, EnumHabilidadeInimigo.Coice);
+        Habilidades habilidade5 = new Habilidades("Incendiar Tudo", TipoHabilidade.Incendiante, 1, 80);
+
+        // Fase 6
+        Inimigo inimigo6 = new Inimigo("Ogro da Torre", "Homem", 15, 60, 50, 70, EnumTipoInimigo.OgroDaTorre, EnumHabilidadeInimigo.GritoSupersonico);
+        Habilidades habilidade6 = new Habilidades("Boa noite Cinderella", TipoHabilidade.Sedante, 1, 90);
 
         Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1);
         Console.ReadKey();
@@ -95,7 +103,7 @@ public class Jogo
             jogador.ExibirInfo();
             Console.WriteLine("* Digite 'A' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-            if (val == 'A') flag = false;
+            if (val == 'X') flag = false;
         }
         Thread.Sleep(500);
         //player.Stop();
@@ -121,7 +129,7 @@ public class Jogo
             arma.ExibirInfo();
             Console.WriteLine("* Digite 'A' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-            if (val == 'A') flag = false;
+            if (val == 'X') flag = false;
         }
         Console.Clear();
         Console.WriteLine($"\tEita! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
@@ -132,8 +140,8 @@ public class Jogo
         Thread.Sleep(2550);
         //MusicaTensa.Stop();
         Console.Clear();
-       /* Yoshi.Load();
-        Yoshi.PlayLooping();*/
+        /* Yoshi.Load();
+         Yoshi.PlayLooping();*/
         Console.WriteLine($"\tOpa! O que é isso aqui? eu acho que é uma {habilidade.Nome}!");
         Habilidades.AdicionarHabilidade(jogador, habilidade);
         Thread.Sleep(10000);
@@ -144,9 +152,9 @@ public class Jogo
             habilidade.ExibirInfo();
             Console.WriteLine("* Digite 'A' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-            if (val == 'A') flag = false;
+            if (val == 'X') flag = false;
         }
-       // Yoshi.Stop();
+        // Yoshi.Stop();
     }
 
     public static void segundoTurno(Personagem jogador, Arma arma, Inimigo inimigo)
@@ -179,9 +187,9 @@ public class Jogo
         while (flag)
         {
             arma.ExibirInfo();
-            Console.WriteLine("* Digite 'A' para prosseguir");
+            Console.WriteLine("* Digite 'X' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-            if (val == 'A') flag = false;
+            if (val == 'X') flag = false;
         }
         // Yoshi.Stop();
     }
@@ -201,7 +209,7 @@ public class Jogo
         Console.WriteLine("# 2 - Prosseguir (não ver)      #");
         Console.WriteLine("#################################");
         int response = int.Parse(Console.ReadLine());
-        Console.Clear() ;
+        Console.Clear();
         if (response == 1)
         {
             Console.WriteLine("\t############################################################");
@@ -220,14 +228,14 @@ public class Jogo
             while (flag)
             {
                 habilidade.ExibirInfo();
-                Console.WriteLine("* Digite 'A' para prosseguir");
+                Console.WriteLine("* Digite 'X' para prosseguir");
                 char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-                if (val == 'A') flag = false;
+                if (val == 'X') flag = false;
             }
             Console.Clear();
         }
         else Console.WriteLine("OK!");
-        
+
         Console.WriteLine($"\tEita! a {inimigo.Nome} está se virando, a batalha irá começar!");
         Thread.Sleep(2400);
         Console.Clear();
@@ -236,7 +244,7 @@ public class Jogo
         Thread.Sleep(2550);
         //MusicaTensa.Stop();
         Console.Clear();
-        
+
     }
 
     public static void QuartoTurno(Personagem jogador, Inimigo inimigo, Arma arma)
@@ -255,7 +263,7 @@ public class Jogo
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tEu acho que esse esqueleto foi almediciado...");
-        Console.WriteLine("\tPelo o menos consgeui roubar a dele");
+        Console.WriteLine("\tPelo o menos consgeui roubar a arma dele");
         Thread.Sleep(2005);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
@@ -265,14 +273,89 @@ public class Jogo
         while (flag)
         {
             arma.ExibirInfo();
-            Console.WriteLine("* Digite 'A' para prosseguir");
+            Console.WriteLine("* Digite 'X' para prosseguir");
             char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
-            if (val == 'A') flag = false;
+            if (val == 'X') flag = false;
         }
         Console.Clear();
     }
 
-    
+    public static void QuintoTurno(Personagem jogador, Arma arma, Inimigo inimigo)
+    {
+        Console.WriteLine("\tAcho que a princesa é por esse lado!");
+        Thread.Sleep(1555);
+        Console.WriteLine("\t* começando a subir as escadas *");
+        Console.WriteLine("\tIsso é um cavalo?");
+        Thread.Sleep(1555);
+        Console.WriteLine("\tAh não....");
+        Thread.Sleep(2000);
+        Console.Clear() ;
+        Batalha.IniciarBatalha(jogador, inimigo);
+        Console.WriteLine("\tQue bicho estranho! Enfim... Que bom que está.. né?");
+        Thread.Sleep(2000);
+        Console.Clear();
+        Console.WriteLine("\tOpa, o que é isso que caiu aqui??");
+        Thread.Sleep(2005);
+        Console.WriteLine();
+        Arma.AdicionarArma(jogador, arma);
+        Thread.Sleep(1555);
+        Console.Clear();
+        bool flag = true;
+        while (flag)
+        {
+            arma.ExibirInfo();
+            Console.WriteLine("* Digite 'X' para prosseguir");
+            char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
+            if (val == 'X') flag = false;
+        }
+        Console.Clear();
+
+    }
+
+    public static void SextoTurno(Personagem jogador, Inimigo inimigo, Arma arma, Habilidades habilidade)
+    {
+        Console.WriteLine("\tQue esculturas bonitas!");
+        Thread.Sleep(2000);
+        Console.Clear();
+        Console.WriteLine("#################################");
+        Console.WriteLine("### VOCÊ RECEBEU UMA MENSAGEM ###");
+        Console.WriteLine("# 1 - Ver mensagem              #");
+        Console.WriteLine("# 2 - Prosseguir (não ver)      #");
+        Console.WriteLine("#################################");
+        int response = int.Parse(Console.ReadLine());
+        Console.Clear();
+        if (response == 1)
+        {
+            Console.WriteLine("\t############################################################");
+            Console.WriteLine("\tDE: Sábio");
+            Console.WriteLine($"\tPARA: {jogador.Nome}");
+            Console.WriteLine();
+            Console.WriteLine($"\tOlá {jogador.Nome}, estou muito orugulhoso de você e toda tua\n\tperserverança! Nossa tribo se uniu e conseguimos combrar essa arma!\n\t" +
+                $"Lembre-se de utilizar-la com muita sabedoria\n");
+            Console.WriteLine("\tAbraços\n");
+            Console.WriteLine("\t############################################################");
+            Thread.Sleep(8000);
+            Habilidades.AdicionarHabilidade(jogador, habilidade);
+            Thread.Sleep(2000);
+            Console.Clear();
+            bool flag = true;
+            while (flag)
+            {
+                habilidade.ExibirInfo();
+                Console.WriteLine("* Digite 'X' para prosseguir");
+                char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
+                if (val == 'X') flag = false;
+            }
+            Console.Clear();
+        }
+        else { Console.WriteLine("OK!"); Thread.Sleep(2000); Console.Clear(); }
+
+        Console.WriteLine("\tO que será que vem agora?");
+
+
+    }
+
+
 
 
 }
