@@ -73,8 +73,8 @@ public class Jogo
     public static Personagem ComecoJogo(Guerreiro guerreiro, Arqueiro arqueiro, Mago mago)
     {
         SoundPlayer flora = new SoundPlayer("flora.wav");
-        flora.Load();
-        flora.PlayLooping();
+        /*flora.Load();*//*
+        flora.PlayLooping();*/
         Console.WriteLine("### INICIANDO JOGO ###");
         Console.WriteLine("\tcarregando...");
         Thread.Sleep(1200);
@@ -91,7 +91,9 @@ public class Jogo
         Console.WriteLine("\tfelicidade daquele vilarejo. Mas também, da filha do mesmo - a Princesa Aurora. Você acha que pode impedí-lo? Do contrário, a linguagem");
         Console.WriteLine("\tmística Java se apossará, contorcendo a mente daqueles que acreditaram fervorosamente num dia melhor. Os guardas do castelo já foram pegos!");
         Console.WriteLine("\tApresse-se!\n");
-        Thread.Sleep(20000);
+        Thread.Sleep(5000);
+        Console.WriteLine("Pressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Console.WriteLine("########### CRIANDO SEU PERSONAGEM ############");
         Console.WriteLine("# Escolha: (insira os números para escolher!) #");
@@ -129,15 +131,16 @@ public class Jogo
 
         SoundPlayer tensa = new SoundPlayer("tenso.wav");
         SoundPlayer yoshi = new SoundPlayer("Yoshi.wav");
-        tensa.Load();
-        tensa.PlayLooping();
+        /*tensa.Load();*//*
+        tensa.PlayLooping();*/
         Console.WriteLine("\tO guarda do castelo está a sua frente. Deve ser um daqueles humanos manipulados.");
         Thread.Sleep(2000);
         Console.WriteLine($"\tFoi uma boa ter guardado a sua {arma.Nome} que achaste nos escombros.");
         Thread.Sleep(4000);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
-        Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         bool flag = true;
         while (flag)
@@ -156,8 +159,8 @@ public class Jogo
         Thread.Sleep(2550);
         tensa.Stop();
         Console.Clear();
-        yoshi.Load();
-        yoshi.PlayLooping();
+        /*yoshi.Load();
+        yoshi.PlayLooping();*/
         Console.WriteLine($"\tOpa! O que é isso aqui? eu acho que é uma {habilidade.Nome}!");
         Habilidades.AdicionarHabilidade(jogador, habilidade);
         Thread.Sleep(8000);

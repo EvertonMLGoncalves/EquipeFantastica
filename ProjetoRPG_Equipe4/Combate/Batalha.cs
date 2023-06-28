@@ -112,6 +112,8 @@ namespace ProjetoRPG_Equipe4.Combate
                 jogador.PontosVida += 20;
                 TerminarBatalha(inimigo, vidainicialjogador, jogador, vidainicialinimigo);
                 Thread.Sleep(5000);
+                Console.WriteLine("Pressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
                 return false;
             }
