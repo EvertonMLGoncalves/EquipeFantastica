@@ -47,6 +47,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             if (personagem.CODIGO != arma.PersonagemApropriado) arma.DanoArma -= (int)(arma.DanoArma * 0.2);
             personagem.ListaArmas.Add(arma);
             Console.WriteLine($"# {arma.Nome} foi adicionada à sacola de armas de {personagem.Nome} com sucesso! #");
+            VerificarHabilidadeItem(arma, personagem);
             /*Console.ReadKey(); //Everton
             Console.Clear();*/ //Everton
         }
@@ -96,25 +97,25 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 int index = random.Next(0, 2);
                 if (index == 0)
                 {
-                    Console.WriteLine("Esta arma não tem habilidade adicional");
+                    Console.WriteLine("# Esta arma não te dá habilidade adicional #\n");
                 }
                 else if (index == 1)
                 {
-                    Console.WriteLine($"Você ganhou uma habilidade do tipo {TipoHabilidade.Atordoante}");
+                    Console.WriteLine($"\n# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Atordoante} #");
                     Habilidades habilidade = new Habilidades("Golpe Certeiro", TipoHabilidade.Atordoante, 2, 0);
                     Habilidades.AdicionarHabilidade(personagem, habilidade);
                 }
             }
-            if (arma.Raridade > 4 && arma.Raridade <= 10)
+            if (arma.Raridade > 2 && arma.Raridade <= 4)
             {
                 int index = random.Next(2, 5);
-                if (index == 0)
+                if (index == 2)
                 {
-                    Console.WriteLine("Esta arma não tem habilidade adicional");
+                    Console.WriteLine("# Esta arma não te dá habilidade adicional #\n");
                 }
-                else if (index == 1)
+                else if (index != 2)
                 {
-                    Console.WriteLine($"Você ganhou uma habilidade do tipo {TipoHabilidade.Envenenante}");
+                    Console.WriteLine($"\n# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Envenenante} #");
                     Habilidades habilidade = new Habilidades("Golpe de Mestre", TipoHabilidade.Envenenante, 1, 50);
                     Habilidades.AdicionarHabilidade(personagem, habilidade);
                 }

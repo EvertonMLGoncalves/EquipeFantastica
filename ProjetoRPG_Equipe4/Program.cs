@@ -113,7 +113,7 @@ public class Jogo
         Thread.Sleep(1555);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
-        Thread.Sleep(1555);
+        Thread.Sleep(7000);
         Console.Clear();
         bool flag = true;
         while (flag)

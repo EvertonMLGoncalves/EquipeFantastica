@@ -45,7 +45,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public static void AdicionarHabilidade(Personagem personagem, Habilidades habilidade) // MVP de associar personagem com habilidade
         {
             personagem.ListaDeHabilidades.Add(habilidade);
-            Console.WriteLine($"Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome}");
+            Console.WriteLine($"# Habilidade {habilidade.Nome} adicionada com sucesso á {personagem.Nome} #");
         }
 
         public void ExibirInfo()
