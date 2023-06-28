@@ -1,6 +1,7 @@
 ﻿using ProjetoRPG_Equipe4.Enums;
 using ProjetoRPG_Equipe4.Personagens;
 using System;
+using System.Threading;
 
 namespace ProjetoRPG_Equipe4.Artefatos
 {
@@ -109,6 +110,34 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 Console.WriteLine($"{inimigo.Nome} está sedado por {inimigo.TurnosAfetado} turno");
             }
         }
+        public static void EscolherHabilidade(Personagem personagem, Personagem inimigo, int danohabilidade)
+        {
+            if (personagem.ListaDeHabilidades.Count > 0 && personagem.ListaDeHabilidades.Exists(h => h.Utilizado != 0))
+            {
+                int index = 1;
+                Console.WriteLine("### HABILIDADES ###");
+                Console.WriteLine("# 0 - Sair e Atacar");
+                foreach (Habilidades habilidadee in personagem.ListaDeHabilidades)
+                {
+                    Console.WriteLine($"# {index} - {habilidadee.Nome}");
+                    Console.WriteLine($"{index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
+                    index++;
+                }
+                Console.WriteLine("#####################");
+                Console.Write("# ");
+                int i = int.Parse(Console.ReadLine());
+                Thread.Sleep(1000);
+                Console.Clear();
+                if (i > 0)
+                {
+                    Habilidades habilidade = personagem.ListaDeHabilidades[i - 1];
+                    Habilidades.UsarHabilidade(habilidade, inimigo);
+                    danohabilidade = habilidade.DanoHabilidade;
+                    personagem.ListaDeHabilidades[i - 1].Utilizado--;
+                }
 
+            }
+
+        }
     }
 }

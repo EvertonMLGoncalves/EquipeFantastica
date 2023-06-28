@@ -34,8 +34,6 @@ namespace ProjetoRPG_Equipe4.Personagens
             Forca = 70;
             XP = 50;
             Status = "Saudável";
-
-
         }
         public Inimigo() { }
         public override void ExibirInfo() //~~Everton c/ Helena na call

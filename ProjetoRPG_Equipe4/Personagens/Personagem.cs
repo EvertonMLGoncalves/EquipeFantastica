@@ -59,33 +59,19 @@ namespace ProjetoRPG_Equipe4.Personagens
             int danoArma = 0;
             int dano = 0;
             int danoHabilidade = 0;
-            int i = 1;
-            int index = 1;
-            //Escolhada arma
             if (ListaArmas.Count > 0) // vendo se o personagem tem arma
             {
                 if (CODIGO == 1 || CODIGO == 2 || CODIGO == 3)
-                { //Checando se nn é um inimigo 
-                    //Console.Clear(); //Everton
-                    Console.WriteLine("### ARMAS ###");
-                    foreach (Arma arma in ListaArmas)
-                    {
-                        Console.WriteLine($"# {index} - {arma.Nome}");
-                        index++;
-                    }
-                    Console.WriteLine("#######################");
-                    index = 1;
-                    Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
-                    Console.Write("# "); i = int.Parse(Console.ReadLine());
-                    Thread.Sleep(1000);
-                    Console.Clear();
+                {
+                    int i = Arma.EscolherArma(this);
                     Arma armaEscolhida = ListaArmas[i - 1];
                     danoArma = armaEscolhida.DanoArma;
                     armaEscolhida.DanoArma -= (int)(armaEscolhida.DanoArma * 0.2);
                     if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i - 1);
                 }
                 else
-                { // se for inimigo
+                { // se for inimigo 
+                    int i = 0;
                     i = random.Next(0, ListaArmas.Count - 1);
                     Arma armaEscolhida = ListaArmas[i];
                     danoArma = armaEscolhida.DanoArma;
@@ -94,60 +80,43 @@ namespace ProjetoRPG_Equipe4.Personagens
                     if (armaEscolhida.DanoArma <= 0) ListaArmas.RemoveAt(i);
                 }
             }
+
+
             else dano = Forca - inimigo.Defesa;
             danoArma += Forca;
             // Everton ~ Implementando o sistema de habilidades
             //Perguntando se o personagem vai querer usar uma habilidade e vendo se ele tem alguma:
-            if (ListaDeHabilidades.Count > 0 && ListaDeHabilidades.Exists(h => h.Utilizado != 0))
-            {
-                Console.WriteLine("### HABILIDADES ###");
-                Console.WriteLine("# 0 - Sair e Atacar");
-                foreach (Habilidades habilidadee in ListaDeHabilidades)
-                {
-                    Console.WriteLine($"# {index} - {habilidadee.Nome}");
-                    Console.WriteLine($"{index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
-                    index++;
-                }
-                Console.WriteLine("#####################");
-                Console.Write("# "); i = int.Parse(Console.ReadLine());
-                Thread.Sleep(1000);
-                Console.Clear();
-                if (i > 0)
-                {
-                    Habilidades habilidade = ListaDeHabilidades[i - 1];
-                    Habilidades.UsarHabilidade(habilidade, inimigo);
-                    danoHabilidade = habilidade.DanoHabilidade;
-                    ListaDeHabilidades[i - 1].Utilizado--;
-                }
-                Console.Clear(); //~Everton 26/06
-            }
+            Habilidades.EscolherHabilidade(this, inimigo, danoHabilidade);
 
             int danoTotal = danoArma + dano + danoHabilidade;
             //Console.WriteLine($"{Nome} está atacando {inimigo.Nome} com tudo!!");//nnc aparece
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
             Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");
-            Thread.Sleep(2000);
-            Console.Clear();
-
-            if (GolpeCritico()) { Console.WriteLine($"# {inimigo.Nome} recebeu um GOLPE CRÍTICO! Aumentando em 50% o seu dano :( #"); Thread.Sleep(2000); Console.Clear(); }// ~~Dani Alves com alteração de Helena na frase e sua localização
+            /*Thread.Sleep(2000);*/
+            /*Console.Clear();*/
             if (inimigo.PontosVida >= 0)
             {
-                Console.WriteLine($"###########################################");
-                Console.WriteLine($"# Pontos de vida - {inimigo.PontosVida} | Dano Sofrido - {danoTotal} #");
-                Console.WriteLine($"###########################################");
-                Thread.Sleep(2000);
-                Console.Clear();
+                Console.WriteLine($"=========================================== \n");
+                Console.WriteLine($"- {inimigo.Nome} - HP: {inimigo.PontosVida}  \n- Dano Sofrido: -{danoTotal} \n");
+                Console.WriteLine($"===========================================");
                 //Golpe crítico 
-
                 if (GolpeCritico())
                 {
                     Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico de {(int)(danoTotal * 0.5)}");
                     danoTotal = danoTotal + (int)(danoTotal * 0.5);
-                } //50% mais de dano ~~Dani Alves
+                    Console.WriteLine("Pressione qualquer tecla para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
+                }  //50% mais de dano ~~Dani Alves 
+                else
+                {
+                    Console.WriteLine("Pressione qualquer tecla para continuar");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
             }
             else Console.WriteLine($"{inimigo.Nome} morreu \nDano Sofrido: {danoTotal}");
-
         }
 
         //<>

@@ -15,10 +15,11 @@ namespace ProjetoRPG_Equipe4.Combate
             while (flag)
             {
                 Console.WriteLine("##########################################");
-                Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida} #");
-                Console.WriteLine($"# Vida atual do seu personagem: {jogador.PontosVida} #");
+                Console.WriteLine($"# {inimigo.Nome} - HP: {inimigo.PontosVida} #");
+                Console.WriteLine($"# {jogador.Nome} - HP: {jogador.PontosVida} #");
                 Console.WriteLine("##########################################");
-                Thread.Sleep(3000);
+                Console.WriteLine("Pressione qualquer tecla para continuar"); 
+                Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("  ## SUA VEZ ###");
                 Console.WriteLine("  # 1 - Atacar #");
@@ -83,9 +84,9 @@ namespace ProjetoRPG_Equipe4.Combate
 
         public static bool ControlarTurno(Personagem jogador, int vidainicialjogador, Personagem inimigo, int vidainicialinimigo, bool flag)
         {
-            Console.WriteLine("Você está atacando!");
+            /*Console.WriteLine("Você está atacando!");
             Thread.Sleep(3000);
-            Console.Clear();
+            Console.Clear();*/
             jogador.Atacar(inimigo);
             Console.WriteLine("#############################");
             Thread.Sleep(1000);
@@ -112,7 +113,7 @@ namespace ProjetoRPG_Equipe4.Combate
             }
             else  //~~Everton
             {
-                Console.WriteLine("Você está sendo atacado!");
+                Console.WriteLine($"{jogador.Nome} está sendo atacado");
                 inimigo.Atacar(jogador);
             }
             if (jogador.PontosVida <= 0)
@@ -123,7 +124,7 @@ namespace ProjetoRPG_Equipe4.Combate
                 Thread.Sleep(5000);
                 flag = false;
             }
-            Console.Clear();
+            /*Console.Clear();*/
             return flag;
         }
     }

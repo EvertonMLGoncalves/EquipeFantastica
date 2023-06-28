@@ -1,6 +1,9 @@
-﻿using ProjetoRPG_Equipe4.Enums;
+﻿using Microsoft.SqlServer.Server;
+using ProjetoRPG_Equipe4.Enums;
 using ProjetoRPG_Equipe4.Personagens;
 using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
 
 namespace ProjetoRPG_Equipe4.Artefatos
 {
@@ -115,9 +118,28 @@ namespace ProjetoRPG_Equipe4.Artefatos
                     Habilidades habilidade = new Habilidades("Golpe de Mestre", TipoHabilidade.Envenenante, 1, 50);
                     Habilidades.AdicionarHabilidade(personagem, habilidade);
                 }
+            } 
+            
+
+
+        } 
+        public static int EscolherArma(Personagem personagem)
+        {
+            int index = 1;
+            Console.WriteLine("### ARMAS ###");
+            foreach (Arma arma in personagem.ListaArmas)
+            {
+                Console.WriteLine($"# {index} - {arma.Nome}");
+                index++;
             }
-
-
+            Console.WriteLine("#######################");
+            index = 1;
+            Console.WriteLine("Qual arma você vai querer usar? (escolha com base no número!)");
+            Console.Write("# ");
+            int i = int.Parse(Console.ReadLine());
+            Thread.Sleep(1000);
+            Console.Clear(); 
+            return i;
         }
     }
 }

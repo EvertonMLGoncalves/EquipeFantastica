@@ -60,7 +60,7 @@ public class Jogo
         Console.Clear();
         Console.WriteLine("d8888b.  d8888b.  d888b       d88888b  .d8b.  d8b   db d888888b  .d8b.  .d8888. d888888b d888888b  .o88b.  .d88b.  ");
         Console.WriteLine("88  `8D 88  `8D 88' Y8b      88'     d8' `8b 888o  88 `~~88~~' d8' `8b 88'  YP `~~88~~'   `88'   d8P  Y8 .8P  Y8. ");
-        Console.WriteLine("88oobY' 88oodD' 88           88ooo   88ooo88 88V8o 88    88    88ooo88 `8bo.      88       88    8P      88    88 ");
+        Console.WriteLine("88oobY' 88oodD' 88           88ooo   88ooo88 88V8o 88    868    88ooo88 `8bo.      88       88    8P      88    88 ");
         Console.WriteLine("88`8b   88~~~   88  ooo      88~~~   88~~~88 88 V8o88    88    88~~~88   `Y8b.    88       88    8b      88    88 ");
         Console.WriteLine("88 `88. 88      88. ~8~      88      88   88 88  V888    88    88   88 db   8D    88      .88.   Y8b  d8 `8b  d8' ");
         Console.WriteLine("88   YD 88       Y888P       YP      YP   YP VP   V8P    YP    YP   YP `8888Y'    YP    Y888888P  `Y88P'  `Y88P'  ");
