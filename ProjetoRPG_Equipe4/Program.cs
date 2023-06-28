@@ -65,7 +65,7 @@ public class Jogo
         QuartoTurno(jogador, inimigo4, arma4);
         QuintoTurno(jogador, arma5, inimigo5);
         SextoTurno(jogador, inimigo6, habilidade6);
-        SetimoTurno(jogador, inimigo6);
+        SetimoTurno(jogador, inimigo7);
         Console.Beep();
 
     }
@@ -139,6 +139,7 @@ public class Jogo
         Thread.Sleep(4000);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
+        Thread.Sleep(4000);
         Console.WriteLine("\nPressione qualquer tecla para continuar");
         Console.ReadKey();
         Console.Clear();
@@ -153,6 +154,8 @@ public class Jogo
         Console.Clear();
         Console.WriteLine($"\tAtente-se. O/A {inimigo.Nome} está chegando mais perto de forma errática e bizarra, a batalha irá começar.");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tUfa! A batalha acabou! Foi por pouco...");
@@ -188,9 +191,13 @@ public class Jogo
         Thread.Sleep(2000);
         Console.WriteLine("\tAh, óbvio que haveria um mascote! Se prepare, um Crocodilo feroz se prepara para te atacar!");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Console.WriteLine($"\tFique atento(a)! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tA batalha acabou, mas você sequer entrou pelo portão principal. Não seja otimista.");
@@ -202,7 +209,9 @@ public class Jogo
         Console.WriteLine($"\tVocê encontra algo no meio dos tijolos quebrados. É uma {arma.Nome}!");
         Thread.Sleep(700);
         Arma.AdicionarArma(jogador, arma);
-        Thread.Sleep(7000);
+        Thread.Sleep(5000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         bool flag = true;
         while (flag)
@@ -243,12 +252,16 @@ public class Jogo
                 $"perigosos nesse castelo, por conta disso estou\n\tte enviando uma habilidade de {habilidade.Nome}.\n\n\tÉ bem potente, mas só pode ser utilizada uma vez, hein!");
             Console.WriteLine("\tÉ cortesia de alguém que se divertiria te vendo apanhar ou vencer. Não quero sua gratidão.\n");
             Console.WriteLine("\t############################################################");
-            Thread.Sleep(15000);
+            Thread.Sleep(5000);
+            Console.WriteLine("\nPressione qualquer tecla para continuar");
+            Console.ReadKey();
             flora.Stop();
             yoshi.Load();
             yoshi.PlayLooping();
             Habilidades.AdicionarHabilidade(jogador, habilidade);
             Thread.Sleep(4000);
+            Console.WriteLine("\nPressione qualquer tecla para continuar");
+            Console.ReadKey();
             Console.Clear();
             bool flag = true;
             while (flag)
@@ -267,10 +280,14 @@ public class Jogo
         tensa.Play();
         Console.WriteLine($"\tPelos céus, a {inimigo.Nome} está se virando, a batalha irá começar!");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tVocê já deve estar se perguntando de onde surgem tantas criaturas medonhas... Não importa. Só siga em frente.");
         Thread.Sleep(4050);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         tensa.Stop();
         Console.Clear();
 
@@ -287,6 +304,8 @@ public class Jogo
         Thread.Sleep(4000);
         Console.WriteLine("\tSerá que alguém ja tentou resgatar a princesa e não conseguiu?");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Console.WriteLine($"\t\t# {inimigo.Nome}: Tsc. Claro que alguém já tentou salvar ela!");
         Thread.Sleep(4000);
@@ -294,16 +313,22 @@ public class Jogo
         Thread.Sleep(4000);
         Console.WriteLine($"\t\t# {inimigo.Nome}: Pelo menos você entende que não estou do seu lado, idiota! Mwahahaha!");
         Thread.Sleep(4000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tVocê pensa que o Cavalheiro das Trevas deve ser alguém terrível para manipular até mesmo esqueletos.");
         Console.WriteLine("\tPelo menos, você consegue sacar a arma do defunto. Um morto pela segunda vez.");
         Thread.Sleep(5000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         tensa.Stop();
         yoshi.Load();
         yoshi.Play();
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Thread.Sleep(3333);
         Console.Clear();
         bool flag = true;
@@ -332,10 +357,14 @@ public class Jogo
         Thread.Sleep(3000);
         Console.WriteLine("\tAh não....");
         Thread.Sleep(3333);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear() ;
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("\tQue bicho estranho! Enfim... Que bom que está.. né?");
         Thread.Sleep(3333);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         tensa.Stop();
         yoshi.Load();
@@ -344,6 +373,8 @@ public class Jogo
         Thread.Sleep(2005);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Thread.Sleep(3000);
         Console.Clear();
         bool flag = true;
@@ -392,6 +423,8 @@ public class Jogo
             yoshi.Play();
             Habilidades.AdicionarHabilidade(jogador, habilidade);
             Thread.Sleep(2000);
+            Console.WriteLine("\nPressione qualquer tecla para continuar");
+            Console.ReadKey();
             Console.Clear();
             bool flag = true;
             while (flag)
@@ -413,6 +446,8 @@ public class Jogo
         Batalha.IniciarBatalha(jogador, inimigo);
         Console.WriteLine("Tchau...");
         Thread.Sleep(2000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
         tensa.Stop();
     }
@@ -433,6 +468,8 @@ public class Jogo
         Console.WriteLine("Envolto(a) na adrenalina de atacar uma criatura horrenda e trazer a paz para o vilarejo vitimado pelos atos infames");
         Console.WriteLine("Você ataca com toda sua força!");
         Thread.Sleep(5000);
+        Console.WriteLine("\nPressione qualquer tecla para continuar");
+        Console.ReadKey();
         Console.Clear();
 
         Batalha.IniciarBatalha(jogador, inimigo);

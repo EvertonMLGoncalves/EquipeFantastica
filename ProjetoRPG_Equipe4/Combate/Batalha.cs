@@ -67,7 +67,9 @@ namespace ProjetoRPG_Equipe4.Combate
                 Console.WriteLine($"# Dano causado por {jogador.Nome}: {vidainicialinimigo - inimigo.PontosVida}\t\t  ");
                 Console.WriteLine($"# XP final: {jogador.XP}\t\t\t\t  ");
                 Console.WriteLine("###########################################");
-                Thread.Sleep(7000);
+                Thread.Sleep(5000);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
 
             }
@@ -78,7 +80,9 @@ namespace ProjetoRPG_Equipe4.Combate
                 Console.WriteLine($"# Vida atual de {jogador}: {jogador.PontosVida}\t\t    ");
                 Console.WriteLine($"# Dano causado por {inimigo.Nome}: {vidainicialjogador - jogador.PontosVida}  ");
                 Console.WriteLine("#############################################");
-                Thread.Sleep(7000);
+                Thread.Sleep(5000);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
             }
             else
@@ -90,7 +94,9 @@ namespace ProjetoRPG_Equipe4.Combate
                 Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida} ");
                 Console.WriteLine($"# Dano recebido: {vidainicialinimigo - inimigo.PontosVida}\t\t\t ");
                 Console.WriteLine("##########################################");
-                Thread.Sleep(7000);
+                Thread.Sleep(5000);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
             }
 
@@ -108,12 +114,12 @@ namespace ProjetoRPG_Equipe4.Combate
             {
                 Console.WriteLine("■O■O■O■O■O■ VOCÊ VENCEU ■O■O■O■O■O■");
                 Thread.Sleep(2500);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
-                jogador.PontosVida += 20;
+                jogador.PontosVida += 80;
                 TerminarBatalha(inimigo, vidainicialjogador, jogador, vidainicialinimigo);
                 Thread.Sleep(5000);
-                Console.WriteLine("Pressione qualquer tecla para continuar");
-                Console.ReadKey();
                 Console.Clear();
                 return false;
             }
@@ -136,7 +142,9 @@ namespace ProjetoRPG_Equipe4.Combate
             else  //~~Everton
             {
                 //Console.WriteLine($"{jogador.Nome} está sendo atacado");
-                Thread.Sleep(7000);
+                Thread.Sleep(5000);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
                 /*Console.WriteLine($"{jogador.Nome} está sendo atacado");*/
                 inimigo.Atacar(jogador);
@@ -145,6 +153,8 @@ namespace ProjetoRPG_Equipe4.Combate
             {
                 Console.WriteLine("****************** GAME OVER! ******************");
                 TerminarBatalha(jogador, vidainicialinimigo, inimigo, vidainicialinimigo);
+                Console.WriteLine("\nPressione qualquer tecla para continuar");
+                Console.ReadKey();
                 Console.Clear();
                 Thread.Sleep(5000);
                 return false;
