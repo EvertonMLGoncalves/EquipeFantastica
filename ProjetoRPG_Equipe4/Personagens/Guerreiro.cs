@@ -26,7 +26,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         public override void ExibirInfo() //~~Everton c/ Helena na call
         {
             base.ExibirInfo();
-            Console.WriteLine($"# Fúria: {Furia}\t\t\t#");
+            Console.WriteLine($"# Fúria: {Furia}\t\t\t");
             Console.WriteLine("#################################");
         }
         public override Personagem CriarPersonagem() //~~Everton c/ Helena na call

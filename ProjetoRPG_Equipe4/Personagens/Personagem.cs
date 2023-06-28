@@ -84,29 +84,37 @@ namespace ProjetoRPG_Equipe4.Personagens
 
             else dano = Forca - inimigo.Defesa;
             danoArma += Forca;
+
             // Everton ~ Implementando o sistema de habilidades
             //Perguntando se o personagem vai querer usar uma habilidade e vendo se ele tem alguma:
+
             Habilidades.EscolherHabilidade(this, inimigo, danoHabilidade);
 
             int danoTotal = danoArma + dano + danoHabilidade;
-            //Console.WriteLine($"{Nome} está atacando {inimigo.Nome} com tudo!!");//nnc aparece
+
             if (danoTotal < 0) danoTotal = 0;
             inimigo.PontosVida -= danoTotal;
-            Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");
+            //Console.WriteLine($"# {inimigo.Nome} está sendo atacado! #");  //!!/!!//!!
             /*Thread.Sleep(2000);*/
             /*Console.Clear();*/
             if (inimigo.PontosVida >= 0)
             {
-                Console.WriteLine($"=========================================== \n");
-                Console.WriteLine($"- {inimigo.Nome} - HP: {inimigo.PontosVida}  \n- Dano Sofrido: -{danoTotal} \n");
-                Console.WriteLine($"===========================================");
+                Console.WriteLine($"#############################################");
+                Console.WriteLine($"- {inimigo.Nome} - HP: {inimigo.PontosVida}  \n- Dano Sofrido: -{danoTotal} ");
+                Console.WriteLine($"#############################################");
                 //Golpe crítico 
                 if (GolpeCritico())
                 {
-                    Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico de {(int)(danoTotal * 0.5)}");
-                    danoTotal = danoTotal + (int)(danoTotal * 0.5);
-                    Console.WriteLine("Pressione qualquer tecla para continuar");
-                    Console.ReadKey();
+                    bool flag = true;
+                    while (flag)
+                    {
+                        Console.WriteLine($"{inimigo.Nome} recebeu um golpe crítico de {(int)(danoTotal * 0.5)}");
+                        danoTotal = danoTotal + (int)(danoTotal * 0.5);
+                        Console.WriteLine("* Digite 'X' para prosseguir");
+                        char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
+                        if (val == 'X') flag = false;
+
+                    }
                     Console.Clear();
                 }  //50% mais de dano ~~Dani Alves 
                 else
@@ -124,13 +132,13 @@ namespace ProjetoRPG_Equipe4.Personagens
         {
             Console.WriteLine("### INFORMAÇÕES DO PERSONAGEM ###");
             //Console.WriteLine($"# Id: {Id}\t\t\t\t#");
-            Console.WriteLine($"# Nome: {Nome}\t\t\t#");
-            Console.WriteLine($"# Sexo: {Sexo}\t\t\t#");
-            Console.WriteLine($"# Pontos de Vida: {PontosVida} \t\t#");
-            Console.WriteLine($"# Forca: {Forca} \t\t\t#");
-            Console.WriteLine($"# Defesa: {Defesa} \t\t\t#");
-            Console.WriteLine($"# Status: {Status} \t\t#");
-            Console.WriteLine($"# XP: {XP} \t\t\t#");
+            Console.WriteLine($"# Nome: {Nome}\t\t\t");
+            Console.WriteLine($"# Sexo: {Sexo}\t\t\t");
+            Console.WriteLine($"# Pontos de Vida: {PontosVida} \t\t");
+            Console.WriteLine($"# Forca: {Forca} \t\t\t");
+            Console.WriteLine($"# Defesa: {Defesa} \t\t\t");
+            Console.WriteLine($"# Status: {Status} \t\t");
+            Console.WriteLine($"# XP: {XP} \t\t\t");
 
         }
         public virtual Personagem CriarPersonagem() //~~Everton c/ Helena na call

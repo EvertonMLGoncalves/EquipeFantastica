@@ -25,7 +25,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         {
 
             base.ExibirInfo();
-            Console.WriteLine($"# Destreza: {Destreza}\t\t\t#");
+            Console.WriteLine($"# Destreza: {Destreza}\t\t\t");
             Console.WriteLine("#################################");
         }
         public override Personagem CriarPersonagem() //~~Everton c/ Helena na call

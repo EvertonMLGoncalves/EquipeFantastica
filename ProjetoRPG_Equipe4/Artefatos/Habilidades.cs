@@ -23,7 +23,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             DanoHabilidade = danoHabilidade;
         }
 
-        public Habilidades CriarHabilidade()
+        public Habilidades CriarHabilidade() //nnc utilizado
         {
             Console.WriteLine("### CRIAR HABILIDADE ###");
             Console.Write("Nome: ");
@@ -51,9 +51,10 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public void ExibirInfo()
         {
             Console.WriteLine("### INFORMAÇÕES DESSA HABILIDADE ####");
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Tipo: {Tipo}");
-            Console.WriteLine($"Dano da habilidade: {DanoHabilidade}");
+            Console.WriteLine($"# Nome: {Nome}");
+            Console.WriteLine($"# Tipo: {Tipo}");
+            Console.WriteLine($"# Dano da habilidade: {DanoHabilidade}");
+            Console.WriteLine($"# Pode ser utilizada: {Utilizado} vezes");
             Console.WriteLine("############################");
 
         }
@@ -120,7 +121,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 foreach (Habilidades habilidadee in personagem.ListaDeHabilidades)
                 {
                     Console.WriteLine($"# {index} - {habilidadee.Nome}");
-                    Console.WriteLine($"{index} - {habilidadee.Nome} - {habilidadee.Utilizado} vez(es) restante(s)");
                     index++;
                 }
                 Console.WriteLine("#####################");
@@ -134,7 +134,9 @@ namespace ProjetoRPG_Equipe4.Artefatos
                     Habilidades.UsarHabilidade(habilidade, inimigo);
                     danohabilidade = habilidade.DanoHabilidade;
                     personagem.ListaDeHabilidades[i - 1].Utilizado--;
+                    if(habilidade.Utilizado <= 0) personagem.ListaDeHabilidades.Remove(habilidade);
                 }
+               
 
             }
 

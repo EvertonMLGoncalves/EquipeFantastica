@@ -37,7 +37,6 @@ namespace ProjetoRPG_Equipe4.Artefatos
             Nome = nome;
             DanoArma = danoArma;
             PersonagemApropriado = personagemApropriado;
-
             Raridade = raridade;
             HabilidadeArma = habilidadeArma;
         }
@@ -76,16 +75,16 @@ namespace ProjetoRPG_Equipe4.Artefatos
         public void ExibirInfo() //~~Helena
         {
             Console.WriteLine("#### EXIBIR INFORMAÇÕES DA ARMA ####");
-            Console.WriteLine($"# ID: {Id}\t\t\t\t   #");
-            Console.WriteLine($"# Nome: {Nome}\t    #");
+            Console.WriteLine($"# ID: {Id}\t\t\t\t   ");
+            Console.WriteLine($"# Nome: {Nome}\t    ");
 
             if (PersonagemApropriado == 1) apropriado = "Guerreiro";
             else if (PersonagemApropriado == 2) apropriado = "Arqueiro";
             else apropriado = "Mago";
 
-            Console.WriteLine($"# Personagem apropriado: {apropriado} #");
-            Console.WriteLine($"# Dano da arma: {DanoArma}\t\t   #");
-            Console.WriteLine($"# Raridade: {Raridade}\t\t\t   #");
+            Console.WriteLine($"# Personagem apropriado: {apropriado} ");
+            Console.WriteLine($"# Dano da arma: {DanoArma}\t\t   ");
+            Console.WriteLine($"# Raridade: {Raridade}\t\t\t   ");
             Console.WriteLine("####################################");
         }
 
@@ -97,7 +96,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 int index = random.Next(0, 2);
                 if (index == 0)
                 {
-                    Console.WriteLine("# Esta arma não te dá habilidade adicional #\n");
+                    Console.WriteLine("# Esta arma não te dá habilidade adicional #");
                 }
                 else if (index == 1)
                 {
@@ -111,11 +110,11 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 int index = random.Next(2, 5);
                 if (index == 2)
                 {
-                    Console.WriteLine("# Esta arma não te dá habilidade adicional #\n");
+                    Console.WriteLine("# Esta arma não te dá habilidade adicional #");
                 }
                 else if (index != 2)
                 {
-                    Console.WriteLine($"\n# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Envenenante} #");
+                    Console.WriteLine($"# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Envenenante} #");
                     Habilidades habilidade = new Habilidades("Golpe de Mestre", TipoHabilidade.Envenenante, 1, 50);
                     Habilidades.AdicionarHabilidade(personagem, habilidade);
                 }

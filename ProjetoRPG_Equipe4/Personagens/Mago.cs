@@ -26,7 +26,7 @@ namespace ProjetoRPG_Equipe4.Personagens
         {
 
             base.ExibirInfo();
-            Console.WriteLine($"# Pontos de magia: {PontosMagia}\t\t#");
+            Console.WriteLine($"# Pontos de magia: {PontosMagia}\t\t");
             Console.WriteLine("#################################");
         }
         public override Personagem CriarPersonagem() //~~Everton c/ Helena na call

@@ -1,4 +1,5 @@
-﻿using ProjetoRPG_Equipe4.Personagens;
+﻿using ProjetoRPG_Equipe4.Artefatos;
+using ProjetoRPG_Equipe4.Personagens;
 using System;
 using System.Threading;
 
@@ -15,12 +16,18 @@ namespace ProjetoRPG_Equipe4.Combate
             int vidaInicialInimigo = inimigo.PontosVida;
             while (flag)
             {
-                Console.WriteLine("##########################################");
-                Console.WriteLine($"# {inimigo.Nome} - HP: {inimigo.PontosVida} #");
-                Console.WriteLine($"# {jogador.Nome} - HP: {jogador.PontosVida} #");
-                Console.WriteLine("##########################################");
-                Console.WriteLine("Pressione qualquer tecla para continuar"); 
-                Console.ReadKey();
+                bool bla = true;
+                while (bla)
+                {
+                    Console.WriteLine("##########################################");
+                    Console.WriteLine($"# {inimigo.Nome} - HP: {inimigo.PontosVida} #");
+                    Console.WriteLine($"# {jogador.Nome} - HP: {jogador.PontosVida} #");
+                    Console.WriteLine("##########################################");
+                    Console.WriteLine("* Digite 'X' para prosseguir");
+                    char val = Char.ToUpper(Char.Parse(Console.ReadLine()));
+                    if (val == 'X') bla = false;
+
+                }
                 Console.Clear();
                 Console.WriteLine("  ## SUA VEZ ###");
                 Console.WriteLine("  # 1 - Atacar #");
@@ -55,30 +62,36 @@ namespace ProjetoRPG_Equipe4.Combate
             {
 
                 Console.WriteLine("########## RESULTADO DAS BATALHA ##########");
-                Console.WriteLine($"# {jogador.Nome} morreu...\t\t\t  #");
-                Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida}  #");
-                Console.WriteLine($"# Dano causado por {jogador.Nome}: {vidainicialinimigo - inimigo.PontosVida}\t\t  #");
-                Console.WriteLine($"# XP final: {jogador.XP}\t\t\t\t  #");
+                Console.WriteLine($"# {jogador.Nome} morreu...\t\t\t  ");
+                Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida}  ");
+                Console.WriteLine($"# Dano causado por {jogador.Nome}: {vidainicialinimigo - inimigo.PontosVida}\t\t  ");
+                Console.WriteLine($"# XP final: {jogador.XP}\t\t\t\t  ");
                 Console.WriteLine("###########################################");
+                Thread.Sleep(7000);
+                Console.Clear();
 
             }
             else if (inimigo.PontosVida <= 0)
             {
                 Console.WriteLine("########### RESULTADO DAS BATALHA ###########");
-                Console.WriteLine($"# {inimigo.Nome} foi derrotado!\t    #");
-                Console.WriteLine($"# Vida atual de {jogador}: {jogador.PontosVida}\t\t    #");
-                Console.WriteLine($"# Dano causado por {inimigo.Nome}: {vidainicialjogador - jogador.PontosVida}  #");
+                Console.WriteLine($"# {inimigo.Nome} foi derrotado!\t    ");
+                Console.WriteLine($"# Vida atual de {jogador}: {jogador.PontosVida}\t\t    ");
+                Console.WriteLine($"# Dano causado por {inimigo.Nome}: {vidainicialjogador - jogador.PontosVida}  ");
                 Console.WriteLine("#############################################");
+                Thread.Sleep(7000);
+                Console.Clear();
             }
             else
             {
                 Console.WriteLine("##########################################");
-                Console.WriteLine($"# {jogador.Nome} fugiu da batalha\t\t #");
-                Console.WriteLine($"# Vida atual de {jogador.Nome}: {jogador.PontosVida}\t\t #");
-                Console.WriteLine($"# Dano recebido: {vidainicialjogador - jogador.PontosVida}\t\t\t #");
-                Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida} #");
-                Console.WriteLine($"# Dano recebido: {vidainicialinimigo - inimigo.PontosVida}\t\t\t #");
+                Console.WriteLine($"# {jogador.Nome} fugiu da batalha\t\t ");
+                Console.WriteLine($"# Vida atual de {jogador.Nome}: {jogador.PontosVida}\t\t ");
+                Console.WriteLine($"# Dano recebido: {vidainicialjogador - jogador.PontosVida}\t\t\t ");
+                Console.WriteLine($"# Vida atual de {inimigo.Nome}: {inimigo.PontosVida} ");
+                Console.WriteLine($"# Dano recebido: {vidainicialinimigo - inimigo.PontosVida}\t\t\t ");
                 Console.WriteLine("##########################################");
+                Thread.Sleep(7000);
+                Console.Clear();
             }
 
         }
@@ -94,6 +107,9 @@ namespace ProjetoRPG_Equipe4.Combate
             if (inimigo.PontosVida <= 0)
             {
                 Console.WriteLine("■O■O■O■O■O■ VOCÊ VENCEU ■O■O■O■O■O■");
+                Thread.Sleep(2500);
+                Console.Clear();
+                jogador.PontosVida += 20;
                 TerminarBatalha(inimigo, vidainicialjogador, jogador, vidainicialinimigo);
                 Thread.Sleep(5000);
                 Console.Clear();
@@ -105,6 +121,8 @@ namespace ProjetoRPG_Equipe4.Combate
                 {
                     inimigo.VerificarDano();
                     Console.WriteLine($"{jogador.Nome} está sendo atacado!");
+                    Thread.Sleep(2000);
+                    Console.Clear();
                     inimigo.Atacar(jogador);
                 }
                 else
@@ -115,6 +133,8 @@ namespace ProjetoRPG_Equipe4.Combate
             else  //~~Everton
             {
                 Console.WriteLine($"{jogador.Nome} está sendo atacado");
+                Thread.Sleep(7000);
+                Console.Clear();
                 inimigo.Atacar(jogador);
             }
             if (jogador.PontosVida <= 0)
