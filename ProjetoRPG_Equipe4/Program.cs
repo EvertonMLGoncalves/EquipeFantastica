@@ -16,8 +16,8 @@ public class Jogo
         Mago mago = new Mago();
 
         // Fase 1
-        Arma arma1 = new Arma(1, "Espada Fantástica", 80, 1, 4, "Cortar com muita ferozidade");
-        Inimigo inimigo1 = new Inimigo("Guarda do Castelo", "Homem", 3, 5, 5, 15, EnumTipoInimigo.GuardaDoCastelo, EnumHabilidadeInimigo.Atordoar);
+        Arma arma1 = new Arma(1, "Espada Fantástica", 80, 1, 4, "Cortar com muita ferocidade");
+        Inimigo inimigo1 = new Inimigo("Guarda do Castelo", "Masculino", 3, 5, 5, 15, EnumTipoInimigo.GuardaDoCastelo, EnumHabilidadeInimigo.Atordoar);
         Habilidades habilidade1 = new Habilidades("Super Veneno", ProjetoRPG_Equipe4.Enums.TipoHabilidade.Envenenante, 2, 35);
 
         // Fase 2
@@ -26,22 +26,22 @@ public class Jogo
 
         // Fase 3
         Habilidades habilidade3 = new Habilidades("Superdoado", TipoHabilidade.Atordoante, 1, 50);
-        Inimigo inimigo3 = new Inimigo("Gragula da torre", "Femea", 7, 25, 20, 30, EnumTipoInimigo.GargulaDaTorre, EnumHabilidadeInimigo.Incendiar);
+        Inimigo inimigo3 = new Inimigo("Gragula da torre", "Feminino", 7, 25, 20, 30, EnumTipoInimigo.GargulaDaTorre, EnumHabilidadeInimigo.Incendiar);
 
         // Fase 4
-        Inimigo inimigo4 = new Inimigo("Esqueleto Malígno", "Homem", 9, 35, 30, 40, EnumTipoInimigo.EsqueletoMaligno, EnumHabilidadeInimigo.Regeneracao);
+        Inimigo inimigo4 = new Inimigo("Esqueleto Malígno", "Masculino", 9, 35, 30, 40, EnumTipoInimigo.EsqueletoMaligno, EnumHabilidadeInimigo.Regeneracao);
         Arma arma4 = new Arma(3, "Bola de fogo suprema", 50, 3, 3, "Bolada na cara!");
 
         // Fase 5
-        Inimigo inimigo5 = new Inimigo("Minotauro", "Homem", 12, 50, 40, 60, EnumTipoInimigo.Minotauro, EnumHabilidadeInimigo.Coice);
+        Inimigo inimigo5 = new Inimigo("Minotauro", "Masculino", 12, 50, 40, 60, EnumTipoInimigo.Minotauro, EnumHabilidadeInimigo.Coice);
         Arma arma5 = new Arma(4, "Espada da sorte", 50, 1, 3, "Mata bem");
 
         // Fase 6
-        Inimigo inimigo6 = new Inimigo("Ogro da Torre", "Homem", 15, 60, 50, 70, EnumTipoInimigo.OgroDaTorre, EnumHabilidadeInimigo.GritoSupersonico);
+        Inimigo inimigo6 = new Inimigo("Ogro da Torre", "Masculino", 15, 60, 50, 70, EnumTipoInimigo.OgroDaTorre, EnumHabilidadeInimigo.GritoSupersonico);
         Habilidades habilidade6 = new Habilidades("Boa noite Cinderella", TipoHabilidade.Sedante, 1, 90);
 
         // Fase 7
-        Inimigo inimigo7 = new Inimigo("Rei das Trevas", "Homem", 20, 80, 70, 90, EnumTipoInimigo.ReiDasTrevas, EnumHabilidadeInimigo.Adormecer);
+        Inimigo inimigo7 = new Inimigo("Rei das Trevas", "Masculino", 20, 80, 70, 90, EnumTipoInimigo.ReiDasTrevas, EnumHabilidadeInimigo.Adormecer);
 
         Menu(guerreiro, arqueiro, mago, arma1, inimigo1, habilidade1,arma2,inimigo2,habilidade3,inimigo3,inimigo4,arma4,inimigo5,arma5,inimigo6,habilidade6,inimigo7);
         Console.ReadKey();
@@ -85,9 +85,11 @@ public class Jogo
         Console.WriteLine("88   YD 88       Y888P       YP      YP   YP VP   V8P    YP    YP   YP `8888Y'    YP    Y888888P  `Y88P'  `Y88P'  ");
         Thread.Sleep(3500);
         Console.Clear();
-        Console.WriteLine("\tO ano era 2003... O rei malvado tinha acabado de prender a Princesa Aurora...");
-        Console.WriteLine("\tMas... 20 anos depois você decide salva-la!");
-        Thread.Sleep(3500);
+        Console.WriteLine("\tNão obstante apenas com a morte do Rei Gwyn, o Cavaleiro das Trevas Nevra decidiu apossar-se não apenas da felicidade daquele vilarejo...");
+        Console.WriteLine("\tfelicidade daquele vilarejo. Mas também, da filha do mesmo - a Princesa Aurora. Você acha que pode impedí-lo? Do contrário, a linguagem");
+        Console.WriteLine("\tmística Java se apossará, contorcendo a mente daqueles que acreditaram fervorosamente num dia melhor. Os guardas do castelo já foram pegos!");
+        Console.WriteLine("\tApresse-se!\n");
+        Thread.Sleep(10000);
         Console.Clear();
         Console.WriteLine("########### CRIANDO SEU PERSONAGEM ############");
         Console.WriteLine("# Escolha: (insira os números para escolher!) #");
@@ -128,8 +130,8 @@ public class Jogo
         SoundPlayer Yoshi = new SoundPlayer("Yoshi.wav");
         MusicaTensa.Load();
         MusicaTensa.PlayLooping();*/
-        Console.WriteLine("\tAh não, a frente do castelo você ja avista o Guarda do Castelo!");
-        Console.WriteLine($"\tQue bom que sua irmã Lelezinha lhe enviou um(a) {arma.Nome}...");
+        Console.WriteLine("\tO guarda do castelo está a sua frente. Deve ser um daqueles humanos manipulados.");
+        Console.WriteLine($"\tFoi uma boa ter guardado a sua {arma.Nome} que achaste nos escombros.");
         Thread.Sleep(1555);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
@@ -144,7 +146,7 @@ public class Jogo
             if (val == 'X') flag = false;
         }
         Console.Clear();
-        Console.WriteLine($"\tEita! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
+        Console.WriteLine($"\tAtente-se. O/A {inimigo.Nome} está chegando mais perto de forma errática e bizarra, a batalha irá começar.");
         Thread.Sleep(2400);
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
@@ -176,21 +178,21 @@ public class Jogo
         SoundPlayer Yoshi = new SoundPlayer("Yoshi.wav");
         MusicaTensa.Load();
         MusicaTensa.PlayLooping();*/
-        Console.WriteLine("\tAiAi... Esse castelo é lindo...");
-        Console.WriteLine("\tAh não... De novo não! Isso é um Crocodilo do Fosso? Será que ele é do mal??");
+        Console.WriteLine("\tEsse castelo é lindo...");
+        Console.WriteLine("\tAh, óbvio que haveria um mascote! Se prepare, um Crocodilo feroz se prepara para te atacar!");
         Thread.Sleep(2355);
         Console.Clear();
-        Console.WriteLine($"\tEita! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
+        Console.WriteLine($"\tFique atento(a)! o/a {inimigo.Nome} está chegando mais perto, a batalha irá começar!");
         Thread.Sleep(2400);
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
-        Console.WriteLine("\tUfa! A batalha acabou! Essa foi tensa...");
+        Console.WriteLine("\tA batalha acabou, mas você sequer entrou pelo portão principal. Não seja otimista.");
         Thread.Sleep(2550);
         //MusicaTensa.Stop();
         Console.Clear();
         /* Yoshi.Load();
          Yoshi.PlayLooping();*/
-        Console.WriteLine($"\tOpa! O que é isso aqui? eu acho que é uma {arma.Nome}!");
+        Console.WriteLine($"\tVocê encontra algo no meio dos tijolos quebrados. É uma {arma.Nome}!");
         Thread.Sleep(700);
         Arma.AdicionarArma(jogador, arma);
         Thread.Sleep(5000);
@@ -225,12 +227,12 @@ public class Jogo
         if (response == 1)
         {
             Console.WriteLine("\t############################################################");
-            Console.WriteLine("\tDE: Lelezinha");
+            Console.WriteLine("\tDE: Anônimo");
             Console.WriteLine($"\tPARA: {jogador.Nome}");
             Console.WriteLine();
-            Console.WriteLine($"\tOi irmã(o)! Estou muito aflita pensando em tudo que você\n\testá passando. Ouvi dizer que existem monstros muito\n\t" +
-                $"perigosos nesse castelo, por conta disso estou\n\tlhe enviando uma habilidade de {habilidade.Nome}.\n\n\tO sábio disse que é bem potente, mas só pode ser utilizada uma vez em.");
-            Console.WriteLine("\tBeijinhos beijinhos sua irmã favorita.\n");
+            Console.WriteLine($"\tSó você sabe o que está passando por. \n\t Ouvi dizer que existem monstros muito\n\t" +
+                $"perigosos nesse castelo, por conta disso estou\n\tte enviando uma habilidade de {habilidade.Nome}.\n\n\tÉ bem potente, mas só pode ser utilizada uma vez, hein!");
+            Console.WriteLine("\tÉ cortesia de alguém que se divertiria te vendo apanhar ou vencer. Não quero sua gratidão.\n");
             Console.WriteLine("\t############################################################");
             Thread.Sleep(8000);
             Habilidades.AdicionarHabilidade(jogador, habilidade);
@@ -248,11 +250,11 @@ public class Jogo
         }
         else Console.WriteLine("OK!");
 
-        Console.WriteLine($"\tEita! a {inimigo.Nome} está se virando, a batalha irá começar!");
+        Console.WriteLine($"\tPelos céus, a {inimigo.Nome} está se virando, a batalha irá começar!");
         Thread.Sleep(2400);
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
-        Console.WriteLine("\tUfa! A batalha acabou! Essa foi beeeem tensa né?...");
+        Console.WriteLine("\tVocê já deve estar se perguntando de onde surgem tantas criaturas medonhas... Não importa. Só siga em frente.");
         Thread.Sleep(2550);
         //MusicaTensa.Stop();
         Console.Clear();
@@ -266,16 +268,16 @@ public class Jogo
         Console.WriteLine("\tSerá que alguém ja tentou resgatar a princesa e não conseguiu?");
         Thread.Sleep(4333);
         Console.Clear();
-        Console.WriteLine($"\t# {inimigo.Nome}: Claro que alguém já tentou salvar ela!");
+        Console.WriteLine($"\t# {inimigo.Nome}: Tsc. Claro que alguém já tentou salvar ela!");
         Thread.Sleep(2000);
-        Console.WriteLine($"\t# {jogador.Nome}: Você? Quer me ajudar? Quem sabe juntos podemos salvar ela!");
+        Console.WriteLine($"\t# {jogador.Nome}: Você? Quer me ajudar? Parece que não está na melhor forma.");
         Thread.Sleep(2000);
-        Console.WriteLine($"\t# {inimigo.Nome}: Eu? Ajudar você? Claro que não! HAHAHAHA SOU MALIGNO!!");
+        Console.WriteLine($"\t# {inimigo.Nome}: Pelo menos você entende que não estou do seu lado, idiota! Mwahahaha!");
         Thread.Sleep(2500);
         Console.Clear();
         Batalha.IniciarBatalha(jogador, inimigo);
-        Console.WriteLine("\tEu acho que esse esqueleto foi almediciado...");
-        Console.WriteLine("\tPelo o menos consgeui roubar a arma dele");
+        Console.WriteLine("\tVocê pensa que o Cavalheiro das Trevas deve ser alguém terrível para manipular até mesmo esqueletos.");
+        Console.WriteLine("\tPelo menos, você consegue sacar a arma do defunto. Um morto pela segunda vez.");
         Thread.Sleep(2005);
         Console.WriteLine();
         Arma.AdicionarArma(jogador, arma);
@@ -342,8 +344,8 @@ public class Jogo
             Console.WriteLine("\tDE: Sábio");
             Console.WriteLine($"\tPARA: {jogador.Nome}");
             Console.WriteLine();
-            Console.WriteLine($"\tOlá {jogador.Nome}, estou muito orugulhoso de você e toda tua\n\tperserverança! Nossa tribo se uniu e conseguimos combrar essa arma!\n\t" +
-                $"Lembre-se de utilizar-la com muita sabedoria\n");
+            Console.WriteLine($"\tOlá {jogador.Nome}, estou muito orgulhoso de você e toda tua\n\tperserverança! Nosso vilarejo se uniu e conseguimos combrar essa arma!\n\t" +
+                $"Lembre-se de utilizá-la com muita sabedoria\n");
             Console.WriteLine("\tAbraços\n");
             Console.WriteLine("\t############################################################");
             Thread.Sleep(8000);
@@ -370,15 +372,15 @@ public class Jogo
 
     public static void SetimoTurno(Personagem jogador, Inimigo inimigo)
     {
-        Console.WriteLine($"\t# {jogador.Nome}: Princesa! Princesa! Estou chegando ai!!");
-        Console.WriteLine($"\t# {inimigo.Nome}: Não tão cedo rapaz!");
+        Console.WriteLine($"\t# {jogador.Nome}: Princesa! Princesa! Estou chegando aí!");
+        Console.WriteLine($"\t# {inimigo.Nome}: Você acha que ficaria tão barato assim?");
+        Console.WriteLine($"\t# {jogador.Nome}: Se estou aqui, é porque sua defesa não foi exatamente das melhores.");
+
+        Console.WriteLine("Envolto(a) na adrenalina de atacar uma criatura horrenda e trazer a paz para o vilarejo vitimado pelos atos infames");
+        Console.WriteLine("Você ataca com toda sua força!");
 
         Batalha.IniciarBatalha(jogador, inimigo);
 
-        Console.WriteLine("Ufa, foi isso amigos!");
+        Console.WriteLine("Isso foi definitivamente mais difícil do que você imaginava.");
     }
-
-
-
-
 }
