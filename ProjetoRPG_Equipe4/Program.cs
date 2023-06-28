@@ -3,6 +3,7 @@ using ProjetoRPG_Equipe4.Combate;
 using ProjetoRPG_Equipe4.Enums;
 using ProjetoRPG_Equipe4.Personagens;
 using System;
+using System.Diagnostics;
 //using System.Media;
 using System.Threading;
 
@@ -351,8 +352,19 @@ public class Jogo
         else { Console.WriteLine("OK!"); Thread.Sleep(2000); Console.Clear(); }
 
         Console.WriteLine("\tO que será que vem agora?");
+        Batalha.IniciarBatalha(jogador, inimigo);
+        Console.WriteLine("Tchau...");
 
+    }
 
+    public static void SetimoTurno(Personagem jogador, Inimigo inimigo)
+    {
+        Console.WriteLine($"\t# {jogador.Nome}: Princesa! Princesa! Estou chegando ai!!");
+        Console.WriteLine($"\t# {inimigo.Nome}: Não tão cedo rapaz!");
+
+        Batalha.IniciarBatalha(jogador, inimigo);
+
+        Console.WriteLine("Ufa, foi isso amigos!");
     }
 
 

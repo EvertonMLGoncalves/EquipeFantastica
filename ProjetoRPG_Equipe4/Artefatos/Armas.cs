@@ -64,7 +64,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
             PersonagemApropriado = int.Parse(Console.ReadLine());
             Console.Write("Dano da arma: ");
             DanoArma = int.Parse(Console.ReadLine());
-            Console.Write("Raridade (1-10): ");
+            Console.Write("Raridade (1-4): ");
             Raridade = int.Parse(Console.ReadLine());
             Console.Write("Habilidade: ");
             HabilidadeArma = Console.ReadLine();
@@ -101,7 +101,7 @@ namespace ProjetoRPG_Equipe4.Artefatos
                 }
                 else if (index == 1)
                 {
-                    Console.WriteLine($"\n# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Atordoante} #");
+                    Console.WriteLine($"# {arma.Nome} te deu uma habilidade do tipo {TipoHabilidade.Atordoante} #");
                     Habilidades habilidade = new Habilidades("Golpe Certeiro", TipoHabilidade.Atordoante, 2, 0);
                     Habilidades.AdicionarHabilidade(personagem, habilidade);
                 }
