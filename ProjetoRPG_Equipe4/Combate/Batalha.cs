@@ -123,6 +123,7 @@ namespace ProjetoRPG_Equipe4.Combate
                     //Console.WriteLine($"{jogador.Nome} está sendo atacado!");
                     Thread.Sleep(2000);
                     Console.Clear();
+                    /*Console.WriteLine($"{jogador.Nome} está sendo atacado!");*/
                     inimigo.Atacar(jogador);
                 }
                 else
@@ -135,6 +136,7 @@ namespace ProjetoRPG_Equipe4.Combate
                 //Console.WriteLine($"{jogador.Nome} está sendo atacado");
                 Thread.Sleep(7000);
                 Console.Clear();
+                /*Console.WriteLine($"{jogador.Nome} está sendo atacado");*/
                 inimigo.Atacar(jogador);
             }
             if (jogador.PontosVida <= 0)
